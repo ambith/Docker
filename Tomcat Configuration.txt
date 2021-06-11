@@ -1,0 +1,39 @@
+ create a softlink for tomcatup through usr/local/bin
+		        -->>bin # ln -s /opt/tomcat/bin/startup.sh /usr/local/bin/tomcatup(if you want to unlink(the commadn is sudo unlink /usr/local/bin/tomcatup)
+		        -->>bin # ln -s /opt/tomcat/bin/shutdown.sh /usr/local/bin/tomcatdown(if you want to unlink(the command is suod unlink /usr/local/bin/tomcatdown)
+
+
+
+
+systemctl status firewalld
+systemctl start firewalld
+systemctl stop firewalld
+sudo systemctl disable firewalld
+
+
+cd-->> conf-->> find / -name context.xml
+	              /opt/apache-tomcat/apache-tomcat-9.0.13/conf/context.xml
+/opt/apache-tomcat/apache-tomcat-9.0.13/webapps/host-manager/META-INF/context.xml--->> valve class name(in same line) <!--  -->
+/opt/apache-tomcat/apache-tomcat-9.0.13/webapps/manager/META-INF/context.xml-->> valve class name <!-- -->
+
+
+<!--
+  NOTE:  The sample user and role entries below are intended for use with the
+  examples web application. They are wrapped in a comment and thus are ignored
+  when reading this file. If you wish to configure these users for use with the
+  examples web application, do not forget to remove the <!.. ..> that surrounds
+  them. You will also need to set the passwords to something appropriate.
+-->
+<!--
+  <role rolename="tomcat"/>
+  <role rolename="role1"/>
+  <user username="tomcat" password="<must-be-changed>" roles="tomcat"/>
+  <user username="both" password="<must-be-changed>" roles="tomcat,role1"/>
+  <user username="role1" password="<must-be-changed>" roles="role1"/>
+-->
+<role rolename="manager-gui"/>
+<role rolename="admin-gui"/>
+<role rolename="manager-script"/>
+<user username="admin" password="password" roles="manager-gui,admin-gui,manager-script"/>
+</tomcat-users>
+

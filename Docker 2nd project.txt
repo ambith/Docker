@@ -1,0 +1,500 @@
+C:\Users\Selvi>docker ps -a
+CONTAINER ID   IMAGE                       COMMAND                  CREATED       STATUS                        PORTS                                                                                      NAMES
+11ababe8c51e   tomcat                      "/bin/bash"              7 days ago    Exited (255) 10 minutes ago   0.0.0.0:8000->8000/tcp, :::8000->8000/tcp, 8080/tcp                                        tomcat-4
+c3b202ce15e1   tomcat                      "/bin/bash"              7 days ago    Exited (0) 7 days ago                                                                                                    tomcat-3
+d9b3a8e1be87   tomcat                      "/bin/bash"              7 days ago    Exited (0) 7 days ago                                                                                                    tomcat-2
+592c1ab697f5   tomcat                      "/bin/bash"              7 days ago    Exited (0) 7 days ago                                                                                                    tomcat-1
+e207a7cefa86   tomcat                      "/bin/bash"              8 days ago    Exited (0) 7 days ago                                                                                                    peaceful_rhodes
+1693954300d2   maven                       "/usr/local/bin/mvn-…"   8 days ago    Exited (255) 8 days ago                                                                                                  maven-1
+a745be5803a3   9d90b56f1a78                "/sbin/tini -- /usr/…"   8 days ago    Exited (255) 8 days ago       8080/tcp, 50000/tcp                                                                        jenkins
+a0e4346ed71a   centos                      "/bin/bash"              8 days ago    Exited (255) 8 days ago                                                                                                  centos
+a54d603f2163   tomcat                      "bin/bash"               8 days ago    Created                       8080/tcp, 127.0.0.1:49153->8345/tcp                                                        suspicious_bose
+6a6e12e0daa4   tomcat                      "catalina.sh run"        10 days ago   Exited (137) 8 days ago                                                                                                  recursing_mayer
+fd19575c2655   tomcat                      "/bin/bash"              10 days ago   Exited (0) 8 days ago                                                                                                    strange_wright
+29f415e732e2   tomcat                      "/bin/bash"              10 days ago   Exited (0) 10 days ago                                                                                                   flamboyant_murdock
+1fd4265cf396   java                        "/bin/bash"              10 days ago   Exited (0) 8 days ago                                                                                                    festive_blackwell
+2b7d4434223b   jenkins/jenkins:lts-jdk11   "/sbin/tini -- /usr/…"   10 days ago   Exited (255) 10 minutes ago   0.0.0.0:8080->8080/tcp, :::8080->8080/tcp, 0.0.0.0:50000->50000/tcp, :::50000->50000/tcp   kind_dewdney
+493dd329203f   jenkins/jenkins:lts         "/sbin/tini -- /usr/…"   10 days ago   Exited (255) 9 days ago       8080/tcp, 50000/tcp                                                                        modest_chatterjee
+dde90d118263   jenkins/jenkins:lts-jdk11   "/sbin/tini -- /usr/…"   10 days ago   Exited (255) 9 days ago       8080/tcp, 50000/tcp                                                                        nice_mendeleev
+3f72bb077f0a   maven                       "/usr/local/bin/mvn-…"   10 days ago   Exited (0) 8 days ago                                                                                                    thirsty_sinoussi
+49b7dbd0e242   centos                      "/bin/bash"              10 days ago   Exited (255) 9 days ago                                                                                                  funny_lamport
+68d77ab10ab5   300e315adb2f                "/bin/bash"              10 days ago   Exited (0) 10 days ago                                                                                                   nice_tu
+eab063bf45a0   300e315adb2f                "/bin/bash"              11 days ago   Exited (0) 11 days ago                                                                                                   xenodochial_noether
+ea564253f5ce   968d394ed243                "/usr/local/bin/mvn-…"   12 days ago   Exited (1) 12 days ago                                                                                                   magical_faraday
+9ef2cd72f7cb   0615804734cc                "/usr/local/bin/mvn-…"   12 days ago   Exited (1) 12 days ago                                                                                                   epic_hopper
+2ff349fe9f5e   0615804734cc                "/usr/local/bin/mvn-…"   12 days ago   Exited (1) 12 days ago                                                                                                   quizzical_pasteur
+9a2dba85a489   0615804734cc                "/usr/local/bin/mvn-…"   12 days ago   Exited (1) 12 days ago                                                                                                   nifty_taussig
+8fdc37ad3bcb   0615804734cc                "/usr/local/bin/mvn-…"   12 days ago   Exited (1) 12 days ago                                                                                                   busy_wescoff
+df7dac0c53fc   jenkins/jenkins:lts-jdk11   "/sbin/tini -- /usr/…"   12 days ago   Exited (255) 11 days ago      0.0.0.0:8080->8080/tcp, :::8080->8080/tcp, 0.0.0.0:50000->50000/tcp, :::50000->50000/tcp   friendly_bardeen
+56e5a9a94e99   0615804734cc                "/usr/local/bin/mvn-…"   13 days ago   Exited (1) 13 days ago                                                                                                   compassionate_pike
+a620b558bb42   0615804734cc                "/usr/local/bin/mvn-…"   13 days ago   Exited (1) 13 days ago                                                                                                   wonderful_kapitsa
+089a129f8bd2   0615804734cc                "/usr/local/bin/mvn-…"   13 days ago   Exited (1) 13 days ago                                                                                                   sleepy_nightingale
+a563b3507716   0615804734cc                "/usr/local/bin/mvn-…"   13 days ago   Created                                                                                                                  sharp_neumann
+e33d03a65ba7   jenkins/jenkins:lts         "/sbin/tini -- /usr/…"   13 days ago   Created                                                                                                                  competent_bhaskara
+631be185fed5   jenkins/jenkins:lts-jdk11   "/sbin/tini -- /usr/…"   13 days ago   Exited (255) 12 days ago      0.0.0.0:8080->8080/tcp, :::8080->8080/tcp, 0.0.0.0:50000->50000/tcp, :::50000->50000/tcp   gracious_robinson
+edb03385b7ac   jenkins/jenkins:lts-jdk11   "/sbin/tini -- /usr/…"   13 days ago   Exited (127) 13 days ago                                                                                                 nice_jepsen
+d4a2ec80e264   jenkins/jenkins:lts         "/sbin/tini -- /usr/…"   13 days ago   Exited (127) 13 days ago                                                                                                 practical_rubin
+9d7e11db5c4f   jenkins/jenkins:lts         "/sbin/tini -- /usr/…"   13 days ago   Exited (127) 13 days ago                                                                                                 zen_darwin
+add98e555e15   jenkins/jenkins:lts         "/sbin/tini -- /usr/…"   13 days ago   Exited (127) 13 days ago                                                                                                 hardcore_visvesvaraya
+827c4690ec01   jenkins/jenkins:lts         "/sbin/tini -- /usr/…"   13 days ago   Exited (127) 13 days ago                                                                                                 quizzical_diffie
+e0e8693e1061   jenkins/jenkins:lts-jdk11   "/sbin/tini -- /usr/…"   13 days ago   Exited (137) 13 days ago                                                                                                 nervous_elion
+ece845da2202   tomcat:latest               "catalina.sh run"        2 weeks ago   Exited (255) 2 weeks ago      8080/tcp, 0.0.0.0:8090->8090/tcp, :::8090->8090/tcp                                        jolly_northcutt
+54ff0229da06   tomcat:latest               "catalina.sh run"        2 weeks ago   Exited (143) 2 weeks ago                                                                                                 magical_tereshkova
+81b14856eca8   tomcat:latest               "catalina.sh run"        2 weeks ago   Exited (137) 2 weeks ago                                                                                                 focused_mendeleev
+f3ecffb0beb4   jenkins/jenkins:lts-jdk11   "/sbin/tini -- /usr/…"   2 weeks ago   Exited (255) 2 weeks ago      8080/tcp, 50000/tcp                                                                        elastic_golick
+e5f0bc579a28   java:latest                 "/bin/bash"              2 weeks ago   Exited (0) 2 weeks ago                                                                                                   loving_rhodes
+63ef9fcf1716   tomcat:latest               "catalina.sh run"        2 weeks ago   Exited (255) 2 weeks ago      8080/tcp, 0.0.0.0:8090->8090/tcp, :::8090->8090/tcp                                        laughing_ardinghelli
+1464e9e6cfee   0615804734cc                "/usr/local/bin/mvn-…"   2 weeks ago   Exited (1) 2 weeks ago                                                                                                   awesome_jones
+2ce55d5b13da   0615804734cc                "/usr/local/bin/mvn-…"   2 weeks ago   Exited (1) 2 weeks ago                                                                                                   maven
+3e9e3c489f6f   0615804734cc                "/usr/local/bin/mvn-…"   2 weeks ago   Exited (1) 2 weeks ago                                                                                                   festive_lederberg
+375ec28e86ea   jenkins/jenkins:lts-jdk11   "/sbin/tini -- /usr/…"   2 weeks ago   Exited (255) 2 weeks ago      0.0.0.0:8080->8080/tcp, :::8080->8080/tcp, 0.0.0.0:50000->50000/tcp, :::50000->50000/tcp   thirsty_mendel
+b1af110d5243   centos                      "/bin/bash"              2 weeks ago   Exited (0) 8 days ago                                                                                                    adoring_solomon
+1a1936a59689   ambith                      "bash"                   2 weeks ago   Exited (0) 8 days ago                                                                                                    intelligent_elbakyan
+d7fe784bfdb4   ambith                      "bash"                   2 weeks ago   Exited (0) 2 weeks ago                                                                                                   zen_hodgkin
+6621e7fc9082   ambith:latest               "bash"                   2 weeks ago   Exited (0) 2 weeks ago                                                                                                   fervent_proskuriakova
+4f6f8c076591   ambith                      "bash"                   2 weeks ago   Exited (0) 2 weeks ago                                                                                                   stoic_chatterjee
+c88a812b2f9d   java                        "/bin/bash"              2 weeks ago   Exited (0) 2 weeks ago                                                                                                   jovial_leavitt
+53c9f2875751   java                        "/bin/bash"              2 weeks ago   Exited (0) 2 weeks ago                                                                                                   ambjava
+99e4691ce741   centos                      "/bin/bash"              2 weeks ago   Exited (0) 2 weeks ago                                                                                                   serene_hodgkin
+0fc5d5a161b8   centos                      "bash"                   2 weeks ago   Exited (255) 2 weeks ago                                                                                                 ambith
+
+C:\Users\Selvi>docker container start 2b7d4434223b
+[ ok 434223b                                     .
+[ ok 11ababe8c51e:/usr/local/tomcat#             .
+root@11ababe8c51e:/usr/local/tomcat# cd ababe8c51e
+root@11ababe8c51e:~# r/local/tomcat#
+root@11ababe8c51e:~# r/local/tomcat# /etc/init.d/ssh start
+root@11ababe8c51e:~# SD Secure Shell server: sshd1e /bin/bash
+root@11ababe8c51e:~# r/local/tomcat# /etc/init.d/ssh start
+root@11ababe8c51e:~# SD Secure Shell server: sshd
+root@11ababe8c51e:~#
+root@11ababe8c51e:~#
+root@11ababe8c51e:~#
+root@11ababe8c51e:~# cd /usr/local/tomcat/bin/
+root@11ababe8c51e:/usr/local/tomcat/bin# ./startup.sh
+Using CATALINA_BASE:   /usr/local/tomcat
+Using CATALINA_HOME:   /usr/local/tomcat
+Using CATALINA_TMPDIR: /usr/local/tomcat/temp
+Using JRE_HOME:        /usr/local/openjdk-11
+Using CLASSPATH:       /usr/local/tomcat/bin/bootstrap.jar:/usr/local/tomcat/bin/tomcat-juli.jar
+Using CATALINA_OPTS:
+Tomcat started.
+root@11ababe8c51e:/usr/local/tomcat/bin# docker ps
+bash: docker: command not found
+root@11ababe8c51e:/usr/local/tomcat/bin# exit
+exit
+
+C:\Users\Selvi>docker ps
+CONTAINER ID   IMAGE                       COMMAND                  CREATED       STATUS          PORTS                                                                                      NAMES
+11ababe8c51e   tomcat                      "/bin/bash"              7 days ago    Up 10 minutes   0.0.0.0:8000->8000/tcp, :::8000->8000/tcp, 8080/tcp                                        tomcat-4
+2b7d4434223b   jenkins/jenkins:lts-jdk11   "/sbin/tini -- /usr/…"   10 days ago   Up 11 minutes   0.0.0.0:8080->8080/tcp, :::8080->8080/tcp, 0.0.0.0:50000->50000/tcp, :::50000->50000/tcp   kind_dewdney
+
+C:\Users\Selvi>docker exec -it -u root 2b7d4434223b /bin/bash
+root@2b7d4434223b:/# mvn clean package
+bash: mvn: command not found
+root@2b7d4434223b:/# cd /opt/tomcat/
+root@2b7d4434223b:/opt/tomcat# source /etc/profile.d/mvn.sh
+root@2b7d4434223b:/opt/tomcat# mvn clean package
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.012 s
+[INFO] Finished at: 2021-06-11T05:26:01Z
+[INFO] ------------------------------------------------------------------------
+[ERROR] The goal you specified requires a project to execute but there is no POM in this directory (/opt/tomcat). Please verify you invoked Maven from the correct directory. -> [Help 1]
+[ERROR]
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR]
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MissingProjectException
+root@2b7d4434223b:/opt/tomcat# mvn clean package
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.126 s
+[INFO] Finished at: 2021-06-11T05:30:03Z
+[INFO] ------------------------------------------------------------------------
+[ERROR] The goal you specified requires a project to execute but there is no POM in this directory (/opt/tomcat). Please verify you invoked Maven from the correct directory. -> [Help 1]
+[ERROR]
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR]
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MissingProjectException
+root@2b7d4434223b:/opt/tomcat# cd /var/jenkins_home/
+root@2b7d4434223b:/var/jenkins_home# ls
+caches                                              jenkins.install.UpgradeWizard.state                                 org.jenkinsci.plugins.workflow.flow.FlowExecutionList.xml
+config.xml                                          jenkins-jobs                                                        plugins
+copy_reference_file.log                             jenkins.model.JenkinsLocationConfiguration.xml                      queue.xml
+credentials.xml                                     jenkins.mvn.GlobalMavenConfig.xml                                   queue.xml.bak
+fingerprints                                        jenkins.security.apitoken.ApiTokenPropertyConfiguration.xml         secret.key
+hudson.model.UpdateCenter.xml                       jenkins.security.QueueItemAuthenticatorConfiguration.xml            secret.key.not-so-secret
+hudson.plugins.deploy.DeployPublisher.Migrator      jenkins.security.UpdateSiteWarningsConfiguration.xml                secrets
+hudson.plugins.emailext.ExtendedEmailPublisher.xml  jenkins.telemetry.Correlator.xml                                    tini_pub.gpg
+hudson.plugins.git.GitTool.xml                      jobs                                                                updates
+hudson.plugins.gradle.Gradle.xml                    logs                                                                userContent
+hudson.tasks.Ant.xml                                nodeMonitors.xml                                                    users
+hudson.tasks.Maven.xml                              nodes                                                               war
+hudson.tools.JDKInstaller.xml                       org.jenkinsci.main.modules.sshd.SSHD.xml                            workflow-libs
+identity.key.enc                                    org.jenkinsci.plugins.gitclient.JGitApacheTool.xml                  workspace
+jenkins.install.InstallUtil.installingPlugins       org.jenkinsci.plugins.gitclient.JGitTool.xml
+jenkins.install.InstallUtil.lastExecVersion         org.jenkinsci.plugins.pipeline.maven.GlobalPipelineMavenConfig.xml
+root@2b7d4434223b:/var/jenkins_home# cd workspace/
+root@2b7d4434223b:/var/jenkins_home/workspace# ls
+demo  demo@2  demo@2@tmp  demo@tmp
+root@2b7d4434223b:/var/jenkins_home/workspace# cd demo
+root@2b7d4434223b:/var/jenkins_home/workspace/demo# ls
+Jenkinsfile.txt  pom.xml  src  target
+root@2b7d4434223b:/var/jenkins_home/workspace/demo# cd target/
+root@2b7d4434223b:/var/jenkins_home/workspace/demo/target# ls
+jai  jai.war  maven-archiver
+root@2b7d4434223b:/var/jenkins_home/workspace/demo/target# ip addr
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+2: sit0@NONE: <NOARP> mtu 1480 qdisc noop state DOWN group default qlen 1000
+    link/sit 0.0.0.0 brd 0.0.0.0
+8: eth0@if9: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default
+    link/ether 02:42:ac:11:00:02 brd ff:ff:ff:ff:ff:ff link-netnsid 0
+    inet 172.17.0.2/16 brd 172.17.255.255 scope global eth0
+       valid_lft forever preferred_lft forever
+root@2b7d4434223b:/var/jenkins_home/workspace/demo/target# scp ./jai.war root@172.17.0.3:/usr/local/
+root@172.17.0.3's password:
+Permission denied, please try again.
+root@172.17.0.3's password:
+Permission denied, please try again.
+root@172.17.0.3's password:
+root@172.17.0.3: Permission denied (publickey,password).
+lost connection
+root@2b7d4434223b:/var/jenkins_home/workspace/demo/target# scp ./jai.war ambith@172.17.0.3:/usr/local/
+ambith@172.17.0.3's password:
+bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+scp: /usr/local//jai.war: Permission denied
+root@2b7d4434223b:/var/jenkins_home/workspace/demo/target# exit
+exit
+
+C:\Users\Selvi>docker ps
+CONTAINER ID   IMAGE                       COMMAND                  CREATED       STATUS          PORTS                                                                                      NAMES
+11ababe8c51e   tomcat                      "/bin/bash"              7 days ago    Up 22 minutes   0.0.0.0:8000->8000/tcp, :::8000->8000/tcp, 8080/tcp                                        tomcat-4
+2b7d4434223b   jenkins/jenkins:lts-jdk11   "/sbin/tini -- /usr/…"   11 days ago   Up 23 minutes   0.0.0.0:8080->8080/tcp, :::8080->8080/tcp, 0.0.0.0:50000->50000/tcp, :::50000->50000/tcp   kind_dewdney
+
+C:\Users\Selvi>docker exec -it -u root 11ababe8c51e /bin/bash
+root@11ababe8c51e:/usr/local/tomcat# cd ..
+root@11ababe8c51e:/usr/local# ls
+bin  etc  games  include  lib  man  openjdk-11  sbin  share  src  tomcat
+root@11ababe8c51e:/usr/local# cd tomcat/
+root@11ababe8c51e:/usr/local/tomcat# su - ambith
+ambith@11ababe8c51e:~$ ip addr
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+2: sit0@NONE: <NOARP> mtu 1480 qdisc noop state DOWN group default qlen 1000
+    link/sit 0.0.0.0 brd 0.0.0.0
+10: eth0@if11: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default
+    link/ether 02:42:ac:11:00:03 brd ff:ff:ff:ff:ff:ff link-netnsid 0
+    inet 172.17.0.3/16 brd 172.17.255.255 scope global eth0
+       valid_lft forever preferred_lft forever
+ambith@11ababe8c51e:~$ exit
+logout
+root@11ababe8c51e:/usr/local/tomcat# exit
+exit
+
+C:\Users\Selvi>docker exec -it -u root 2b7d4434223b /bin/bash
+root@2b7d4434223b:/# cd /var/jenkins_home/workspace/demo/target/
+root@2b7d4434223b:/var/jenkins_home/workspace/demo/target# ls
+jai  jai.war  maven-archiver
+root@2b7d4434223b:/var/jenkins_home/workspace/demo/target# scp ./jai.war ambith@172.17.0.3:/usr/local/bin/
+ambith@172.17.0.3's password:
+bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+scp: /usr/local/bin//jai.war: Permission denied
+root@2b7d4434223b:/var/jenkins_home/workspace/demo/target# exit
+exit
+
+C:\Users\Selvi>docker exec -it -u root 11ababe8c51e /bin/bash
+root@11ababe8c51e:/usr/local/tomcat# passwd root
+New password:
+Retype new password:
+passwd: password updated successfully
+root@11ababe8c51e:/usr/local/tomcat# exit
+exit
+
+C:\Users\Selvi>docker exec -it -u root 2b7d4434223b /bin/bash
+root@2b7d4434223b:/# cd /var/jenkins_home/workspace/demo/target/
+root@2b7d4434223b:/var/jenkins_home/workspace/demo/target# scp ./jai.war root@172.17.0.3:/usr/local/bin/
+root@172.17.0.3's password:
+Permission denied, please try again.
+root@172.17.0.3's password:
+Permission denied, please try again.
+root@172.17.0.3's password:
+root@172.17.0.3: Permission denied (publickey,password).
+lost connection
+root@2b7d4434223b:/var/jenkins_home/workspace/demo/target# exit
+exit
+
+C:\Users\Selvi>docker ps
+CONTAINER ID   IMAGE                       COMMAND                  CREATED       STATUS          PORTS                                                                                      NAMES
+11ababe8c51e   tomcat                      "/bin/bash"              7 days ago    Up 28 minutes   0.0.0.0:8000->8000/tcp, :::8000->8000/tcp, 8080/tcp                                        tomcat-4
+2b7d4434223b   jenkins/jenkins:lts-jdk11   "/sbin/tini -- /usr/…"   11 days ago   Up 29 minutes   0.0.0.0:8080->8080/tcp, :::8080->8080/tcp, 0.0.0.0:50000->50000/tcp, :::50000->50000/tcp   kind_dewdney
+
+C:\Users\Selvi>docker exec -it -u root 11ababe8c51e /bin/bash
+root@11ababe8c51e:/usr/local/tomcat# /etc/init.d/ssh status
+[ ok ] sshd is running.
+root@11ababe8c51e:/usr/local/tomcat# exit
+exit
+
+C:\Users\Selvi>docker exe -it -u root 2b7d4434223b /bin/bash
+unknown shorthand flag: 'i' in -it
+See 'docker --help'.
+
+Usage:  docker [OPTIONS] COMMAND
+
+A self-sufficient runtime for containers
+
+Options:
+      --config string      Location of client config files (default
+                           "C:\\Users\\Selvi\\.docker")
+  -c, --context string     Name of the context to use to connect to the
+                           daemon (overrides DOCKER_HOST env var and
+                           default context set with "docker context use")
+  -D, --debug              Enable debug mode
+  -H, --host list          Daemon socket(s) to connect to
+  -l, --log-level string   Set the logging level
+                           ("debug"|"info"|"warn"|"error"|"fatal")
+                           (default "info")
+      --tls                Use TLS; implied by --tlsverify
+      --tlscacert string   Trust certs signed only by this CA (default
+                           "C:\\Users\\Selvi\\.docker\\ca.pem")
+      --tlscert string     Path to TLS certificate file (default
+                           "C:\\Users\\Selvi\\.docker\\cert.pem")
+      --tlskey string      Path to TLS key file (default
+                           "C:\\Users\\Selvi\\.docker\\key.pem")
+      --tlsverify          Use TLS and verify the remote
+  -v, --version            Print version information and quit
+
+Management Commands:
+  app*        Docker App (Docker Inc., v0.9.1-beta3)
+  builder     Manage builds
+  buildx*     Build with BuildKit (Docker Inc., v0.5.1-docker)
+  compose*    Docker Compose (Docker Inc., 2.0.0-beta.1)
+  config      Manage Docker configs
+  container   Manage containers
+  context     Manage contexts
+  image       Manage images
+  manifest    Manage Docker image manifests and manifest lists
+  network     Manage networks
+  node        Manage Swarm nodes
+  plugin      Manage plugins
+  scan*       Docker Scan (Docker Inc., v0.8.0)
+  secret      Manage Docker secrets
+  service     Manage services
+  stack       Manage Docker stacks
+  swarm       Manage Swarm
+  system      Manage Docker
+  trust       Manage trust on Docker images
+  volume      Manage volumes
+
+Commands:
+  attach      Attach local standard input, output, and error streams to a running container
+  build       Build an image from a Dockerfile
+  commit      Create a new image from a container's changes
+  cp          Copy files/folders between a container and the local filesystem
+  create      Create a new container
+  diff        Inspect changes to files or directories on a container's filesystem
+  events      Get real time events from the server
+  exec        Run a command in a running container
+  export      Export a container's filesystem as a tar archive
+  history     Show the history of an image
+  images      List images
+  import      Import the contents from a tarball to create a filesystem image
+  info        Display system-wide information
+  inspect     Return low-level information on Docker objects
+  kill        Kill one or more running containers
+  load        Load an image from a tar archive or STDIN
+  login       Log in to a Docker registry
+  logout      Log out from a Docker registry
+  logs        Fetch the logs of a container
+  pause       Pause all processes within one or more containers
+  port        List port mappings or a specific mapping for the container
+  ps          List containers
+  pull        Pull an image or a repository from a registry
+  push        Push an image or a repository to a registry
+  rename      Rename a container
+  restart     Restart one or more containers
+  rm          Remove one or more containers
+  rmi         Remove one or more images
+  run         Run a command in a new container
+  save        Save one or more images to a tar archive (streamed to STDOUT by default)
+  search      Search the Docker Hub for images
+  start       Start one or more stopped containers
+  stats       Display a live stream of container(s) resource usage statistics
+  stop        Stop one or more running containers
+  tag         Create a tag TARGET_IMAGE that refers to SOURCE_IMAGE
+  top         Display the running processes of a container
+  unpause     Unpause all processes within one or more containers
+  update      Update configuration of one or more containers
+  version     Show the Docker version information
+  wait        Block until one or more containers stop, then print their exit codes
+
+Run 'docker COMMAND --help' for more information on a command.
+
+To get more help with docker, check out our guides at https://docs.docker.com/go/guides/
+
+
+C:\Users\Selvi>docker exec -it -u root 2b7d4434223b /bin/bash
+root@2b7d4434223b:/# /etc/init.d/ssh start
+bash: /etc/init.d/ssh: No such file or directory
+root@2b7d4434223b:/# cd /var/jenkins_home/workspace/demo/target/
+root@2b7d4434223b:/var/jenkins_home/workspace/demo/target# scp ./jai.war root@172.17.0.3:/usr/local/tomcat/webapps
+root@172.17.0.3's password:
+Permission denied, please try again.
+root@172.17.0.3's password:
+Permission denied, please try again.
+root@172.17.0.3's password:
+root@172.17.0.3: Permission denied (publickey,password).
+lost connection
+root@2b7d4434223b:/var/jenkins_home/workspace/demo/target# scp ./jai.war ambith@172.17.0.3:/usr/local/tomcat/webapps
+ambith@172.17.0.3's password:
+Permission denied, please try again.
+ambith@172.17.0.3's password:
+bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+scp: /usr/local/tomcat/webapps/jai.war: Permission denied
+root@2b7d4434223b:/var/jenkins_home/workspace/demo/target# exit
+exit
+
+C:\Users\Selvi>docker ps
+CONTAINER ID   IMAGE                       COMMAND                  CREATED       STATUS          PORTS                                                                                      NAMES
+11ababe8c51e   tomcat                      "/bin/bash"              7 days ago    Up 37 minutes   0.0.0.0:8000->8000/tcp, :::8000->8000/tcp, 8080/tcp                                        tomcat-4
+2b7d4434223b   jenkins/jenkins:lts-jdk11   "/sbin/tini -- /usr/…"   11 days ago   Up 38 minutes   0.0.0.0:8080->8080/tcp, :::8080->8080/tcp, 0.0.0.0:50000->50000/tcp, :::50000->50000/tcp   kind_dewdney
+
+C:\Users\Selvi>docker exec -it -u root 11ababe8c51e /bin/bash
+root@11ababe8c51e:/usr/local/tomcat# cat /etc/passwd
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/var/run/ircd:/usr/sbin/nologin
+gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+_apt:x:100:65534::/nonexistent:/usr/sbin/nologin
+systemd-timesync:x:101:103:systemd Time Synchronization,,,:/run/systemd:/usr/sbin/nologin
+systemd-network:x:102:104:systemd Network Management,,,:/run/systemd:/usr/sbin/nologin
+systemd-resolve:x:103:105:systemd Resolver,,,:/run/systemd:/usr/sbin/nologin
+messagebus:x:104:106::/nonexistent:/usr/sbin/nologin
+sshd:x:105:65534::/run/sshd:/usr/sbin/nologin
+ambith:x:1000:1000::/home/ambith:/bin/bash
+root@11ababe8c51e:/usr/local/tomcat# passwd ambith
+New password:
+Retype new password:
+passwd: password updated successfully
+root@11ababe8c51e:/usr/local/tomcat# su - ambith
+ambith@11ababe8c51e:~$ exit
+logout
+root@11ababe8c51e:/usr/local/tomcat# visudo
+bash: visudo: command not found
+root@11ababe8c51e:/usr/local/tomcat# apt-get install vi
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+E: Unable to locate package vi
+root@11ababe8c51e:/usr/local/tomcat# apt-get update
+Hit:1 http://deb.debian.org/debian buster InRelease
+Get:2 http://security.debian.org/debian-security buster/updates InRelease [65.4 kB]
+Get:3 http://deb.debian.org/debian buster-updates InRelease [51.9 kB]
+Get:4 http://security.debian.org/debian-security buster/updates/main amd64 Packages [292 kB]
+Fetched 409 kB in 11s (35.8 kB/s)
+Reading package lists... Done
+root@11ababe8c51e:/usr/local/tomcat# apt-get install vi
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+E: Unable to locate package vi
+root@11ababe8c51e:/usr/local/tomcat# vimsudo
+bash: vimsudo: command not found
+root@11ababe8c51e:/usr/local/tomcat# vim sudo
+root@11ababe8c51e:/usr/local/tomcat# cd w
+webapps/      webapps.dist/ work/
+root@11ababe8c51e:/usr/local/tomcat# cd webapps
+root@11ababe8c51e:/usr/local/tomcat/webapps# ls
+Ambith  Ambith.war
+root@11ababe8c51e:/usr/local/tomcat/webapps# cd Ambith
+root@11ababe8c51e:/usr/local/tomcat/webapps/Ambith# ls
+META-INF  WEB-INF  index.jsp
+root@11ababe8c51e:/usr/local/tomcat/webapps/Ambith# cd
+root@11ababe8c51e:~# exit
+exit
+
+C:\Users\Selvi>docker ps
+CONTAINER ID   IMAGE                       COMMAND                  CREATED       STATUS          PORTS                                                                                      NAMES
+11ababe8c51e   tomcat                      "/bin/bash"              7 days ago    Up 46 minutes   0.0.0.0:8000->8000/tcp, :::8000->8000/tcp, 8080/tcp                                        tomcat-4
+2b7d4434223b   jenkins/jenkins:lts-jdk11   "/sbin/tini -- /usr/…"   11 days ago   Up 47 minutes   0.0.0.0:8080->8080/tcp, :::8080->8080/tcp, 0.0.0.0:50000->50000/tcp, :::50000->50000/tcp   kind_dewdney
+
+C:\Users\Selvi>docker exec -it -u root 2b7d4434223b /bin/bash
+root@2b7d4434223b:/# cd /var/jenkins_home/workspace/demo/target/
+root@2b7d4434223b:/var/jenkins_home/workspace/demo/target# scp ./jai.war root@172.17.0.3:/tmp/
+root@172.17.0.3's password:
+Permission denied, please try again.
+root@172.17.0.3's password:
+Permission denied, please try again.
+root@172.17.0.3's password:
+root@172.17.0.3: Permission denied (publickey,password).
+lost connection
+root@2b7d4434223b:/var/jenkins_home/workspace/demo/target# scp ./jai.war ambith@172.17.0.3:/tmp/
+ambith@172.17.0.3's password:
+bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+jai.war                                                                                                                                                            100% 2077    49.7KB/s   00:00
+root@2b7d4434223b:/var/jenkins_home/workspace/demo/target# scp ./jai.war ambith@172.17.0.3:/usr/local/bin/
+ambith@172.17.0.3's password:
+bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+scp: /usr/local/bin//jai.war: Permission denied
+root@2b7d4434223b:/var/jenkins_home/workspace/demo/target# exit
+exit
+
+C:\Users\Selvi>docker exec -it -u root 11ababe8c51e /bin/bash
+root@11ababe8c51e:/usr/local/tomcat# cd /tmp/
+root@11ababe8c51e:/tmp# ls
+hsperfdata_root  jai.war
+root@11ababe8c51e:/tmp# mv ./jai.war /usr/local/tomcat/webapps
+root@11ababe8c51e:/tmp# cd /usr/local/tomcat/webapps
+root@11ababe8c51e:/usr/local/tomcat/webapps# ls
+Ambith  Ambith.war  jai  jai.war
+root@11ababe8c51e:/usr/local/tomcat/webapps# cd /tmp/
+root@11ababe8c51e:/tmp# ls
+hsperfdata_root
+root@11ababe8c51e:/tmp# exit
+exit
+
+C:\Users\Selvi>docker exec -it -u root 11ababe8c51e /bin/bash
+root@11ababe8c51e:/usr/local/tomcat# eict
+bash: eict: command not found
+root@11ababe8c51e:/usr/local/tomcat# exit
+exit
+
+C:\Users\Selvi>docker exec -it -u root 2b7d4434223b /bin/bash
+root@2b7d4434223b:/# cd /var/jenkins_home/workspace/demo/target/
+root@2b7d4434223b:/var/jenkins_home/workspace/demo/target# ls
+jai  jai.war  maven-archiver
+root@2b7d4434223b:/var/jenkins_home/workspace/demo/target# scp ./jai.war root@172.17.0.3:/tmp/
+root@172.17.0.3's password:
+Permission denied, please try again.
+root@172.17.0.3's password:
+Permission denied, please try again.
+root@172.17.0.3's password:
+root@172.17.0.3: Permission denied (publickey,password).
+lost connection
+root@2b7d4434223b:/var/jenkins_home/workspace/demo/target#

@@ -1,0 +1,1666 @@
+Tomcat File
+
+C:\Users\Selvi>docker exec -it -u root e207a7cefa86 /bin/bash
+root@e207a7cefa86:/usr/local/tomcat# ip addr
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+2: sit0@NONE: <NOARP> mtu 1480 qdisc noop state DOWN group default qlen 1000
+    link/sit 0.0.0.0 brd 0.0.0.0
+14: eth0@if15: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default
+    link/ether 02:42:ac:11:00:03 brd ff:ff:ff:ff:ff:ff link-netnsid 0
+    inet 172.17.0.3/16 brd 172.17.255.255 scope global eth0
+       valid_lft forever preferred_lft forever
+root@e207a7cefa86:/usr/local/tomcat# /etc/init.d/
+hwclock.sh  procps
+root@e207a7cefa86:/usr/local/tomcat# service tomcat start
+tomcat: unrecognized service
+root@e207a7cefa86:/usr/local/tomcat# docker ps
+bash: docker: command not found
+root@e207a7cefa86:/usr/local/tomcat# exit
+exit
+
+C:\Users\Selvi>
+C:\Users\Selvi>
+C:\Users\Selvi>docker ps
+CONTAINER ID   IMAGE                       COMMAND                  CREATED       STATUS       PORTS                                                                                      NAMES
+e207a7cefa86   tomcat                      "/bin/bash"              6 hours ago   Up 5 hours   8080/tcp, 0.0.0.0:8345->8345/tcp, :::8345->8345/tcp                                        peaceful_rhodes
+2b7d4434223b   jenkins/jenkins:lts-jdk11   "/sbin/tini -- /usr/…"   3 days ago    Up 6 hours   0.0.0.0:8080->8080/tcp, :::8080->8080/tcp, 0.0.0.0:50000->50000/tcp, :::50000->50000/tcp   kind_dewdney
+
+C:\Users\Selvi>docker container stop e207a7cefa86
+e207a7cefa86
+
+C:\Users\Selvi>docker ps
+CONTAINER ID   IMAGE                       COMMAND                  CREATED      STATUS       PORTS                                                                                      NAMES
+2b7d4434223b   jenkins/jenkins:lts-jdk11   "/sbin/tini -- /usr/…"   3 days ago   Up 6 hours   0.0.0.0:8080->8080/tcp, :::8080->8080/tcp, 0.0.0.0:50000->50000/tcp, :::50000->50000/tcp   kind_dewdney
+C:\Users\Selvi>docker images
+REPOSITORY        TAG         IMAGE ID       CREATED        SIZE
+maven             latest      968d394ed243   5 days ago     767MB
+ambith            latest      b6ff38ee71bc   8 days ago     1.07GB
+tomcat            latest      c43a65faae57   2 weeks ago    667MB
+jenkins/jenkins   lts-jdk11   9d90b56f1a78   4 weeks ago    688MB
+jenkins/jenkins   lts         3c87c42366c1   4 weeks ago    576MB
+maven             <none>      0615804734cc   6 weeks ago    741MB
+centos            latest      300e315adb2f   5 months ago   209MB
+java              latest      d23bdf5b1b1b   4 years ago    643MB
+
+C:\Users\Selvi>docker run -itd --name tomcat-1 -u root tomcat /bin/bash
+592c1ab697f596f0eac7bdbc92b18fd914d36fa07c035c9cc077a50528fda3a8
+
+C:\Users\Selvi>docker ps
+CONTAINER ID   IMAGE                       COMMAND                  CREATED          STATUS         PORTS                                                                                      NAMES
+592c1ab697f5   tomcat                      "/bin/bash"              31 seconds ago   Up 9 seconds   8080/tcp                                                                                   tomcat-1
+2b7d4434223b   jenkins/jenkins:lts-jdk11   "/sbin/tini -- /usr/…"   3 days ago       Up 6 hours     0.0.0.0:8080->8080/tcp, :::8080->8080/tcp, 0.0.0.0:50000->50000/tcp, :::50000->50000/tcp   kind_dewdney
+
+C:\Users\Selvi>docker container stop 592c1ab697f5
+592c1ab697f5
+
+C:\Users\Selvi>docker run -itd --name tomcat-2 -u root -p 8888:8080 tomcat /bin/bash
+d9b3a8e1be87d5b138a0a67a8bb1beae42144a611341be778bb3908549fa6f64
+
+C:\Users\Selvi>docker ps
+CONTAINER ID   IMAGE                       COMMAND                  CREATED          STATUS         PORTS                                                                                      NAMES
+d9b3a8e1be87   tomcat                      "/bin/bash"              14 seconds ago   Up 4 seconds   0.0.0.0:8888->8080/tcp, :::8888->8080/tcp                                                  tomcat-2
+2b7d4434223b   jenkins/jenkins:lts-jdk11   "/sbin/tini -- /usr/…"   3 days ago       Up 6 hours     0.0.0.0:8080->8080/tcp, :::8080->8080/tcp, 0.0.0.0:50000->50000/tcp, :::50000->50000/tcp   kind_dewdney
+
+C:\Users\Selvi>docker exec -it -u root d9b3a8e1be87 /bin/bash
+root@d9b3a8e1be87:/usr/local/tomcat# cd conf/
+root@d9b3a8e1be87:/usr/local/tomcat/conf# vim server.xml
+bash: vim: command not found
+root@d9b3a8e1be87:/usr/local/tomcat/conf# apt-get install vim
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+E: Unable to locate package vim
+root@d9b3a8e1be87:/usr/local/tomcat/conf# apt-get update
+Get:1 http://deb.debian.org/debian buster InRelease [121 kB]
+Get:2 http://security.debian.org/debian-security buster/updates InRelease [65.4 kB]
+Get:3 http://deb.debian.org/debian buster-updates InRelease [51.9 kB]
+Get:4 http://security.debian.org/debian-security buster/updates/main amd64 Packages [291 kB]
+Get:5 http://deb.debian.org/debian buster/main amd64 Packages [7907 kB]
+Get:6 http://deb.debian.org/debian buster-updates/main amd64 Packages [10.9 kB]
+Fetched 8447 kB in 11s (800 kB/s)
+Reading package lists... Done
+root@d9b3a8e1be87:/usr/local/tomcat/conf# apt-get install vim
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+The following additional packages will be installed:
+  libgpm2 vim-common vim-runtime xxd
+Suggested packages:
+  gpm ctags vim-doc vim-scripts
+The following NEW packages will be installed:
+  libgpm2 vim vim-common vim-runtime xxd
+0 upgraded, 5 newly installed, 0 to remove and 1 not upgraded.
+Need to get 7425 kB of archives.
+After this operation, 33.8 MB of additional disk space will be used.
+Do you want to continue? [Y/n] y
+Get:1 http://deb.debian.org/debian buster/main amd64 xxd amd64 2:8.1.0875-5 [140 kB]
+Get:2 http://deb.debian.org/debian buster/main amd64 vim-common all 2:8.1.0875-5 [195 kB]
+Get:3 http://deb.debian.org/debian buster/main amd64 libgpm2 amd64 1.20.7-5 [35.1 kB]
+Get:4 http://deb.debian.org/debian buster/main amd64 vim-runtime all 2:8.1.0875-5 [5775 kB]
+Get:5 http://deb.debian.org/debian buster/main amd64 vim amd64 2:8.1.0875-5 [1280 kB]
+Fetched 7425 kB in 2s (3395 kB/s)
+debconf: delaying package configuration, since apt-utils is not installed
+Selecting previously unselected package xxd.
+(Reading database ... 12572 files and directories currently installed.)
+Preparing to unpack .../xxd_2%3a8.1.0875-5_amd64.deb ...
+Unpacking xxd (2:8.1.0875-5) ...
+Selecting previously unselected package vim-common.
+Preparing to unpack .../vim-common_2%3a8.1.0875-5_all.deb ...
+Unpacking vim-common (2:8.1.0875-5) ...
+Selecting previously unselected package libgpm2:amd64.
+Preparing to unpack .../libgpm2_1.20.7-5_amd64.deb ...
+Unpacking libgpm2:amd64 (1.20.7-5) ...
+Selecting previously unselected package vim-runtime.
+Preparing to unpack .../vim-runtime_2%3a8.1.0875-5_all.deb ...
+Adding 'diversion of /usr/share/vim/vim81/doc/help.txt to /usr/share/vim/vim81/doc/help.txt.vim-tiny by vim-runtime'
+Adding 'diversion of /usr/share/vim/vim81/doc/tags to /usr/share/vim/vim81/doc/tags.vim-tiny by vim-runtime'
+Unpacking vim-runtime (2:8.1.0875-5) ...
+Selecting previously unselected package vim.
+Preparing to unpack .../vim_2%3a8.1.0875-5_amd64.deb ...
+Unpacking vim (2:8.1.0875-5) ...
+Setting up libgpm2:amd64 (1.20.7-5) ...
+Setting up xxd (2:8.1.0875-5) ...
+Setting up vim-common (2:8.1.0875-5) ...
+Setting up vim-runtime (2:8.1.0875-5) ...
+Setting up vim (2:8.1.0875-5) ...
+update-alternatives: using /usr/bin/vim.basic to provide /usr/bin/vim (vim) in auto mode
+update-alternatives: using /usr/bin/vim.basic to provide /usr/bin/vimdiff (vimdiff) in auto mode
+update-alternatives: using /usr/bin/vim.basic to provide /usr/bin/rvim (rvim) in auto mode
+update-alternatives: using /usr/bin/vim.basic to provide /usr/bin/rview (rview) in auto mode
+update-alternatives: using /usr/bin/vim.basic to provide /usr/bin/vi (vi) in auto mode
+update-alternatives: using /usr/bin/vim.basic to provide /usr/bin/view (view) in auto mode
+update-alternatives: using /usr/bin/vim.basic to provide /usr/bin/ex (ex) in auto mode
+update-alternatives: using /usr/bin/vim.basic to provide /usr/bin/editor (editor) in auto mode
+Processing triggers for libc-bin (2.28-10) ...
+Processing triggers for mime-support (3.62) ...
+root@d9b3a8e1be87:/usr/local/tomcat/conf# vim server.xml
+root@d9b3a8e1be87:/usr/local/tomcat/conf# cd ..
+root@d9b3a8e1be87:/usr/local/tomcat# ls
+BUILDING.txt  CONTRIBUTING.md  LICENSE  NOTICE  README.md  RELEASE-NOTES  RUNNING.txt  bin  conf  lib  logs  native-jni-lib  temp  webapps  webapps.dist  work
+root@d9b3a8e1be87:/usr/local/tomcat# cd bin/
+root@d9b3a8e1be87:/usr/local/tomcat/bin# ls
+bootstrap.jar       catalina.sh  commons-daemon-native.tar.gz  configtest.sh  digest.sh    setclasspath.sh  startup.sh       tool-wrapper.sh
+catalina-tasks.xml  ciphers.sh   commons-daemon.jar            daemon.sh      makebase.sh  shutdown.sh      tomcat-juli.jar  version.sh
+root@d9b3a8e1be87:/usr/local/tomcat/bin# ./startup.sh
+Using CATALINA_BASE:   /usr/local/tomcat
+Using CATALINA_HOME:   /usr/local/tomcat
+Using CATALINA_TMPDIR: /usr/local/tomcat/temp
+Using JRE_HOME:        /usr/local/openjdk-11
+Using CLASSPATH:       /usr/local/tomcat/bin/bootstrap.jar:/usr/local/tomcat/bin/tomcat-juli.jar
+Using CATALINA_OPTS:
+Tomcat started.
+root@d9b3a8e1be87:/usr/local/tomcat/bin# ./shutdown.sh
+Using CATALINA_BASE:   /usr/local/tomcat
+Using CATALINA_HOME:   /usr/local/tomcat
+Using CATALINA_TMPDIR: /usr/local/tomcat/temp
+Using JRE_HOME:        /usr/local/openjdk-11
+Using CLASSPATH:       /usr/local/tomcat/bin/bootstrap.jar:/usr/local/tomcat/bin/tomcat-juli.jar
+Using CATALINA_OPTS:
+NOTE: Picked up JDK_JAVA_OPTIONS:  --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.io=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.util.concurrent=ALL-UNNAMED --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+root@d9b3a8e1be87:/usr/local/tomcat/bin# ./startup.sh start
+Using CATALINA_BASE:   /usr/local/tomcat
+Using CATALINA_HOME:   /usr/local/tomcat
+Using CATALINA_TMPDIR: /usr/local/tomcat/temp
+Using JRE_HOME:        /usr/local/openjdk-11
+Using CLASSPATH:       /usr/local/tomcat/bin/bootstrap.jar:/usr/local/tomcat/bin/tomcat-juli.jar
+Using CATALINA_OPTS:
+Tomcat started.
+root@d9b3a8e1be87:/usr/local/tomcat/bin# cd ..
+root@d9b3a8e1be87:/usr/local/tomcat# ls
+BUILDING.txt  CONTRIBUTING.md  LICENSE  NOTICE  README.md  RELEASE-NOTES  RUNNING.txt  bin  conf  lib  logs  native-jni-lib  temp  webapps  webapps.dist  work
+root@d9b3a8e1be87:/usr/local/tomcat# exit
+exit
+
+C:\Users\Selvi>docker ps
+CONTAINER ID   IMAGE                       COMMAND                  CREATED          STATUS          PORTS                                                                                      NAMESd9b3a8e1be87   tomcat                      "/bin/bash"              18 minutes ago   Up 18 minutes   0.0.0.0:8888->8080/tcp, :::8888->8080/tcp                                                  tomcat-2
+2b7d4434223b   jenkins/jenkins:lts-jdk11   "/sbin/tini -- /usr/…"   3 days ago       Up 6 hours      0.0.0.0:8080->8080/tcp, :::8080->8080/tcp, 0.0.0.0:50000->50000/tcp, :::50000->50000/tcp   kind_dewdney
+
+C:\Users\Selvi>docker container stop d9b3a8e1be87
+d9b3a8e1be87
+
+C:\Users\Selvi>docker run -itd --name tomcat-3 -u root -p 9090:8080 tomcat /bin/bash
+c3b202ce15e1e0c70664abd9f6be0dab46110e29136db12185a932bf3a45a93b
+
+C:\Users\Selvi>docker ps
+CONTAINER ID   IMAGE                       COMMAND                  CREATED          STATUS          PORTS                                                                                      NAMESc3b202ce15e1   tomcat                      "/bin/bash"              30 seconds ago   Up 27 seconds   0.0.0.0:9090->8080/tcp, :::9090->8080/tcp                                                  tomcat-3
+2b7d4434223b   jenkins/jenkins:lts-jdk11   "/sbin/tini -- /usr/…"   3 days ago       Up 6 hours      0.0.0.0:8080->8080/tcp, :::8080->8080/tcp, 0.0.0.0:50000->50000/tcp, :::50000->50000/tcp   kind_dewdney
+
+C:\Users\Selvi>docker exec -it -u root c3b202ce15e1 /bin/bash
+root@c3b202ce15e1:/usr/local/tomcat# ls
+BUILDING.txt  CONTRIBUTING.md  LICENSE  NOTICE  README.md  RELEASE-NOTES  RUNNING.txt  bin  conf  lib  logs  native-jni-lib  temp  webapps  webapps.dist  work
+root@c3b202ce15e1:/usr/local/tomcat# cd bin/
+root@c3b202ce15e1:/usr/local/tomcat/bin# ls
+bootstrap.jar       catalina.sh  commons-daemon-native.tar.gz  configtest.sh  digest.sh    setclasspath.sh  startup.sh       tool-wrapper.sh
+catalina-tasks.xml  ciphers.sh   commons-daemon.jar            daemon.sh      makebase.sh  shutdown.sh      tomcat-juli.jar  version.sh
+root@c3b202ce15e1:/usr/local/tomcat/bin# ./startup.sh
+Using CATALINA_BASE:   /usr/local/tomcat
+Using CATALINA_HOME:   /usr/local/tomcat
+Using CATALINA_TMPDIR: /usr/local/tomcat/temp
+Using JRE_HOME:        /usr/local/openjdk-11
+Using CLASSPATH:       /usr/local/tomcat/bin/bootstrap.jar:/usr/local/tomcat/bin/tomcat-juli.jar
+Using CATALINA_OPTS:
+Tomcat started.
+root@c3b202ce15e1:/usr/local/tomcat/bin# cd ..
+root@c3b202ce15e1:/usr/local/tomcat# sl
+bash: sl: command not found
+root@c3b202ce15e1:/usr/local/tomcat# ls
+BUILDING.txt  CONTRIBUTING.md  LICENSE  NOTICE  README.md  RELEASE-NOTES  RUNNING.txt  bin  conf  lib  logs  native-jni-lib  temp  webapps  webapps.dist  work
+root@c3b202ce15e1:/usr/local/tomcat# ls
+BUILDING.txt  CONTRIBUTING.md  LICENSE  NOTICE  README.md  RELEASE-NOTES  RUNNING.txt  bin  conf  lib  logs  native-jni-lib  temp  webapps  webapps.dist  work
+root@c3b202ce15e1:/usr/local/tomcat# passwd tomcat
+passwd: user 'tomcat' does not exist
+root@c3b202ce15e1:/usr/local/tomcat# cat /etc/passwd
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/var/run/ircd:/usr/sbin/nologin
+gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+_apt:x:100:65534::/nonexistent:/usr/sbin/nologin
+root@c3b202ce15e1:/usr/local/tomcat# passwd
+New password:
+Retype new password:
+passwd: password updated successfully
+root@c3b202ce15e1:/usr/local/tomcat# ls -l
+total 156
+-rw-r--r-- 1 root root 18949 May  8 17:35 BUILDING.txt
+-rw-r--r-- 1 root root  5644 May  8 17:35 CONTRIBUTING.md
+-rw-r--r-- 1 root root 57092 May  8 17:35 LICENSE
+-rw-r--r-- 1 root root  2333 May  8 17:35 NOTICE
+-rw-r--r-- 1 root root  3372 May  8 17:35 README.md
+-rw-r--r-- 1 root root  6898 May  8 17:35 RELEASE-NOTES
+-rw-r--r-- 1 root root 16507 May  8 17:35 RUNNING.txt
+drwxr-xr-x 2 root root  4096 May 13 18:39 bin
+drwxr-xr-x 1 root root  4096 Jun  3 10:53 conf
+drwxr-xr-x 2 root root  4096 May 13 18:38 lib
+drwxrwxrwx 1 root root  4096 Jun  3 10:53 logs
+drwxr-xr-x 2 root root  4096 May 13 18:38 native-jni-lib
+drwxrwxrwx 2 root root  4096 May 13 18:38 temp
+drwxr-xr-x 2 root root  4096 May 13 18:38 webapps
+drwxr-xr-x 7 root root  4096 May  8 17:35 webapps.dist
+drwxrwxrwx 2 root root  4096 May  8 17:35 work
+root@c3b202ce15e1:/usr/local/tomcat# ls webapps
+root@c3b202ce15e1:/usr/local/tomcat# exit
+exit
+
+C:\Users\Selvi>docker exec -it -u root c3b202ce15e1 /bin/bash
+root@c3b202ce15e1:/usr/local/tomcat# ip addr
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+2: sit0@NONE: <NOARP> mtu 1480 qdisc noop state DOWN group default qlen 1000
+    link/sit 0.0.0.0 brd 0.0.0.0
+20: eth0@if21: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default
+    link/ether 02:42:ac:11:00:03 brd ff:ff:ff:ff:ff:ff link-netnsid 0
+    inet 172.17.0.3/16 brd 172.17.255.255 scope global eth0
+       valid_lft forever preferred_lft forever
+root@c3b202ce15e1:/usr/local/tomcat# exit
+exit
+
+C:\Users\Selvi>docker ps
+CONTAINER ID   IMAGE                       COMMAND                  CREATED         STATUS         PORTS                                                                                      NAMES
+c3b202ce15e1   tomcat                      "/bin/bash"              6 minutes ago   Up 6 minutes   0.0.0.0:9090->8080/tcp, :::9090->8080/tcp                                                  tomcat-3
+2b7d4434223b   jenkins/jenkins:lts-jdk11   "/sbin/tini -- /usr/…"   3 days ago      Up 6 hours     0.0.0.0:8080->8080/tcp, :::8080->8080/tcp, 0.0.0.0:50000->50000/tcp, :::50000->50000/tcp   kind_dewdney
+
+C:\Users\Selvi>docker exec -it -u root 2b7d4434223b /bin/bash
+root@2b7d4434223b:/# cd
+root@2b7d4434223b:~# su - jenkins
+jenkins@2b7d4434223b:~$ cd
+jenkins@2b7d4434223b:~$ pwd
+/var/jenkins_home
+jenkins@2b7d4434223b:~$ ls
+caches                                              jenkins.install.InstallUtil.installingPlugins                org.jenkinsci.plugins.gitclient.JGitTool.xml
+config.xml                                          jenkins.install.InstallUtil.lastExecVersion                  org.jenkinsci.plugins.pipeline.maven.GlobalPipelineMavenConfig.xml
+copy_reference_file.log                             jenkins.install.UpgradeWizard.state                          org.jenkinsci.plugins.workflow.flow.FlowExecutionList.xml
+credentials.xml                                     jenkins.model.JenkinsLocationConfiguration.xml               plugins
+fingerprints                                        jenkins.mvn.GlobalMavenConfig.xml                            queue.xml.bak
+hudson.model.UpdateCenter.xml                       jenkins.security.QueueItemAuthenticatorConfiguration.xml     secret.key
+hudson.plugins.deploy.DeployPublisher.Migrator      jenkins.security.UpdateSiteWarningsConfiguration.xml         secret.key.not-so-secret
+hudson.plugins.emailext.ExtendedEmailPublisher.xml  jenkins.security.apitoken.ApiTokenPropertyConfiguration.xml  secrets
+hudson.plugins.git.GitTool.xml                      jenkins.telemetry.Correlator.xml                             tini_pub.gpg
+hudson.plugins.gradle.Gradle.xml                    jobs                                                         updates
+hudson.tasks.Ant.xml                                logs                                                         userContent
+hudson.tasks.Maven.xml                              nodeMonitors.xml                                             users
+hudson.tools.JDKInstaller.xml                       nodes                                                        war
+identity.key.enc                                    org.jenkinsci.main.modules.sshd.SSHD.xml                     workflow-libs
+jenkins-jobs                                        org.jenkinsci.plugins.gitclient.JGitApacheTool.xml           workspace
+jenkins@2b7d4434223b:~$ cd workspace/
+jenkins@2b7d4434223b:~/workspace$ ls
+demo  demo@2  demo@2@tmp  demo@tmp
+jenkins@2b7d4434223b:~/workspace$ cd demo
+jenkins@2b7d4434223b:~/workspace/demo$ ls
+Jenkinsfile.txt  pom.xml  src  target
+jenkins@2b7d4434223b:~/workspace/demo$ cd target/
+jenkins@2b7d4434223b:~/workspace/demo/target$ ls
+Ambith  Ambith.war  maven-archiver
+jenkins@2b7d4434223b:~/workspace/demo/target$ scp Ambith.war root@172.17.0.3:/usr/local/tomcat/webapps/
+ssh: connect to host 172.17.0.3 port 22: Connection refused
+lost connection
+jenkins@2b7d4434223b:~/workspace/demo/target$ ping 172.17.0.3
+PING 172.17.0.3 (172.17.0.3) 56(84) bytes of data.
+64 bytes from 172.17.0.3: icmp_seq=1 ttl=64 time=12.6 ms
+64 bytes from 172.17.0.3: icmp_seq=2 ttl=64 time=0.121 ms
+^C
+--- 172.17.0.3 ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 18ms
+rtt min/avg/max/mdev = 0.121/6.356/12.592/6.236 ms
+jenkins@2b7d4434223b:~/workspace/demo/target$ eixt
+-bash: eixt: command not found
+jenkins@2b7d4434223b:~/workspace/demo/target$ exit
+logout
+root@2b7d4434223b:~# docker ps
+bash: docker: command not found
+root@2b7d4434223b:~# exit
+exit
+
+C:\Users\Selvi>docker ps
+CONTAINER ID   IMAGE                       COMMAND                  CREATED          STATUS          PORTS                                                                                      NAMESc3b202ce15e1   tomcat                      "/bin/bash"              14 minutes ago   Up 14 minutes   0.0.0.0:9090->8080/tcp, :::9090->8080/tcp                                                  tomcat-3
+2b7d4434223b   jenkins/jenkins:lts-jdk11   "/sbin/tini -- /usr/…"   3 days ago       Up 6 hours      0.0.0.0:8080->8080/tcp, :::8080->8080/tcp, 0.0.0.0:50000->50000/tcp, :::50000->50000/tcp   kind_dewdney
+
+C:\Users\Selvi>docker exec -it -u root c3b202ce15e1 /bin/bash
+root@c3b202ce15e1:/usr/local/tomcat# cd conf/
+root@c3b202ce15e1:/usr/local/tomcat/conf# vim tomcat-users.xml
+bash: vim: command not found
+root@c3b202ce15e1:/usr/local/tomcat/conf# apt-get install vim
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+E: Unable to locate package vim
+root@c3b202ce15e1:/usr/local/tomcat/conf# apt-get update
+Get:1 http://security.debian.org/debian-security buster/updates InRelease [65.4 kB]
+Get:2 http://deb.debian.org/debian buster InRelease [121 kB]
+Get:3 http://deb.debian.org/debian buster-updates InRelease [51.9 kB]
+Get:4 http://security.debian.org/debian-security buster/updates/main amd64 Packages [291 kB]
+Get:5 http://deb.debian.org/debian buster/main amd64 Packages [7907 kB]
+Get:6 http://deb.debian.org/debian buster-updates/main amd64 Packages [10.9 kB]
+Fetched 8447 kB in 19s (448 kB/s)
+Reading package lists... Done
+root@c3b202ce15e1:/usr/local/tomcat/conf# apt-get install vim
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+The following additional packages will be installed:
+  libgpm2 vim-common vim-runtime xxd
+Suggested packages:
+  gpm ctags vim-doc vim-scripts
+The following NEW packages will be installed:
+  libgpm2 vim vim-common vim-runtime xxd
+0 upgraded, 5 newly installed, 0 to remove and 1 not upgraded.
+Need to get 7425 kB of archives.
+After this operation, 33.8 MB of additional disk space will be used.
+Do you want to continue? [Y/n] y
+Get:1 http://deb.debian.org/debian buster/main amd64 xxd amd64 2:8.1.0875-5 [140 kB]
+Get:2 http://deb.debian.org/debian buster/main amd64 vim-common all 2:8.1.0875-5 [195 kB]
+Get:3 http://deb.debian.org/debian buster/main amd64 libgpm2 amd64 1.20.7-5 [35.1 kB]
+Get:4 http://deb.debian.org/debian buster/main amd64 vim-runtime all 2:8.1.0875-5 [5775 kB]
+Get:5 http://deb.debian.org/debian buster/main amd64 vim amd64 2:8.1.0875-5 [1280 kB]
+Fetched 7425 kB in 3s (2508 kB/s)
+debconf: delaying package configuration, since apt-utils is not installed
+Selecting previously unselected package xxd.
+(Reading database ... 12572 files and directories currently installed.)
+Preparing to unpack .../xxd_2%3a8.1.0875-5_amd64.deb ...
+Unpacking xxd (2:8.1.0875-5) ...
+Selecting previously unselected package vim-common.
+Preparing to unpack .../vim-common_2%3a8.1.0875-5_all.deb ...
+Unpacking vim-common (2:8.1.0875-5) ...
+Selecting previously unselected package libgpm2:amd64.
+Preparing to unpack .../libgpm2_1.20.7-5_amd64.deb ...
+Unpacking libgpm2:amd64 (1.20.7-5) ...
+Selecting previously unselected package vim-runtime.
+Preparing to unpack .../vim-runtime_2%3a8.1.0875-5_all.deb ...
+Adding 'diversion of /usr/share/vim/vim81/doc/help.txt to /usr/share/vim/vim81/doc/help.txt.vim-tiny by vim-runtime'
+Adding 'diversion of /usr/share/vim/vim81/doc/tags to /usr/share/vim/vim81/doc/tags.vim-tiny by vim-runtime'
+Unpacking vim-runtime (2:8.1.0875-5) ...
+Selecting previously unselected package vim.
+Preparing to unpack .../vim_2%3a8.1.0875-5_amd64.deb ...
+Unpacking vim (2:8.1.0875-5) ...
+Setting up libgpm2:amd64 (1.20.7-5) ...
+Setting up xxd (2:8.1.0875-5) ...
+Setting up vim-common (2:8.1.0875-5) ...
+Setting up vim-runtime (2:8.1.0875-5) ...
+Setting up vim (2:8.1.0875-5) ...
+update-alternatives: using /usr/bin/vim.basic to provide /usr/bin/vim (vim) in auto mode
+update-alternatives: using /usr/bin/vim.basic to provide /usr/bin/vimdiff (vimdiff) in auto mode
+update-alternatives: using /usr/bin/vim.basic to provide /usr/bin/rvim (rvim) in auto mode
+update-alternatives: using /usr/bin/vim.basic to provide /usr/bin/rview (rview) in auto mode
+update-alternatives: using /usr/bin/vim.basic to provide /usr/bin/vi (vi) in auto mode
+update-alternatives: using /usr/bin/vim.basic to provide /usr/bin/view (view) in auto mode
+update-alternatives: using /usr/bin/vim.basic to provide /usr/bin/ex (ex) in auto mode
+update-alternatives: using /usr/bin/vim.basic to provide /usr/bin/editor (editor) in auto mode
+Processing triggers for libc-bin (2.28-10) ...
+Processing triggers for mime-support (3.62) ...
+root@c3b202ce15e1:/usr/local/tomcat/conf# vim tomcat-users.xml
+root@c3b202ce15e1:/usr/local/tomcat/conf# cd ..
+root@c3b202ce15e1:/usr/local/tomcat# cd bin/
+root@c3b202ce15e1:/usr/local/tomcat/bin# ./startup.sh
+Using CATALINA_BASE:   /usr/local/tomcat
+Using CATALINA_HOME:   /usr/local/tomcat
+Using CATALINA_TMPDIR: /usr/local/tomcat/temp
+Using JRE_HOME:        /usr/local/openjdk-11
+Using CLASSPATH:       /usr/local/tomcat/bin/bootstrap.jar:/usr/local/tomcat/bin/tomcat-juli.jar
+Using CATALINA_OPTS:
+Tomcat started.
+root@c3b202ce15e1:/usr/local/tomcat/bin# apt-get install openssh-server
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+The following additional packages will be installed:
+  dbus dmsetup libapparmor1 libargon2-1 libcryptsetup12 libdbus-1-3 libdevmapper1.02.1 libidn11 libip4tc0 libjson-c3 libkmod2 libnss-systemd libpam-systemd libwrap0 libx11-6 libx11-data libxau6
+  libxcb1 libxdmcp6 libxext6 libxmuu1 ncurses-term openssh-sftp-server systemd systemd-sysv xauth
+Suggested packages:
+  default-dbus-session-bus | dbus-session-bus molly-guard monkeysphere rssh ssh-askpass ufw systemd-container policykit-1
+The following NEW packages will be installed:
+  dbus dmsetup libapparmor1 libargon2-1 libcryptsetup12 libdbus-1-3 libdevmapper1.02.1 libidn11 libip4tc0 libjson-c3 libkmod2 libnss-systemd libpam-systemd libwrap0 libx11-6 libx11-data libxau6
+  libxcb1 libxdmcp6 libxext6 libxmuu1 ncurses-term openssh-server openssh-sftp-server systemd systemd-sysv xauth
+0 upgraded, 27 newly installed, 0 to remove and 1 not upgraded.
+Need to get 7570 kB of archives.
+After this operation, 27.9 MB of additional disk space will be used.
+Do you want to continue? [Y/n] Y
+Get:1 http://security.debian.org/debian-security buster/updates/main amd64 libx11-data all 2:1.6.7-1+deb10u2 [299 kB]
+Get:2 http://deb.debian.org/debian buster/main amd64 libapparmor1 amd64 2.13.2-10 [94.7 kB]
+Get:3 http://deb.debian.org/debian buster/main amd64 libargon2-1 amd64 0~20171227-0.2 [19.6 kB]
+Get:4 http://deb.debian.org/debian buster/main amd64 dmsetup amd64 2:1.02.155-3 [90.8 kB]
+Get:5 http://deb.debian.org/debian buster/main amd64 libdevmapper1.02.1 amd64 2:1.02.155-3 [141 kB]
+Get:6 http://security.debian.org/debian-security buster/updates/main amd64 libx11-6 amd64 2:1.6.7-1+deb10u2 [757 kB]
+Get:7 http://deb.debian.org/debian buster/main amd64 libjson-c3 amd64 0.12.1+ds-2+deb10u1 [27.3 kB]
+Get:8 http://deb.debian.org/debian buster/main amd64 libcryptsetup12 amd64 2:2.1.0-5+deb10u2 [193 kB]
+Get:9 http://deb.debian.org/debian buster/main amd64 libidn11 amd64 1.33-2.2 [116 kB]
+Get:10 http://deb.debian.org/debian buster/main amd64 libip4tc0 amd64 1.8.2-4 [70.2 kB]
+Get:11 http://deb.debian.org/debian buster/main amd64 libkmod2 amd64 26-1 [52.7 kB]
+Get:12 http://deb.debian.org/debian buster/main amd64 systemd amd64 241-7~deb10u7 [3499 kB]
+Get:13 http://deb.debian.org/debian buster/main amd64 systemd-sysv amd64 241-7~deb10u7 [100 kB]
+Get:14 http://deb.debian.org/debian buster/main amd64 libdbus-1-3 amd64 1.12.20-0+deb10u1 [215 kB]
+Get:15 http://deb.debian.org/debian buster/main amd64 dbus amd64 1.12.20-0+deb10u1 [236 kB]
+Get:16 http://deb.debian.org/debian buster/main amd64 libnss-systemd amd64 241-7~deb10u7 [205 kB]
+Get:17 http://deb.debian.org/debian buster/main amd64 libpam-systemd amd64 241-7~deb10u7 [209 kB]
+Get:18 http://deb.debian.org/debian buster/main amd64 ncurses-term all 6.1+20181013-2+deb10u2 [490 kB]
+Get:19 http://deb.debian.org/debian buster/main amd64 libwrap0 amd64 7.6.q-28 [58.7 kB]
+Get:20 http://deb.debian.org/debian buster/main amd64 libxau6 amd64 1:1.0.8-1+b2 [19.9 kB]
+Get:21 http://deb.debian.org/debian buster/main amd64 libxdmcp6 amd64 1:1.1.2-3 [26.3 kB]
+Get:22 http://deb.debian.org/debian buster/main amd64 libxcb1 amd64 1.13.1-2 [137 kB]
+Get:23 http://deb.debian.org/debian buster/main amd64 libxext6 amd64 2:1.3.3-1+b2 [52.5 kB]
+Get:24 http://deb.debian.org/debian buster/main amd64 libxmuu1 amd64 2:1.1.2-2+b3 [23.9 kB]
+Get:25 http://deb.debian.org/debian buster/main amd64 openssh-sftp-server amd64 1:7.9p1-10+deb10u2 [44.6 kB]
+Get:26 http://deb.debian.org/debian buster/main amd64 openssh-server amd64 1:7.9p1-10+deb10u2 [352 kB]
+Get:27 http://deb.debian.org/debian buster/main amd64 xauth amd64 1:1.0.10-1 [40.3 kB]
+Fetched 7570 kB in 2s (3737 kB/s)
+debconf: delaying package configuration, since apt-utils is not installed
+Selecting previously unselected package libapparmor1:amd64.
+(Reading database ... 14467 files and directories currently installed.)
+Preparing to unpack .../0-libapparmor1_2.13.2-10_amd64.deb ...
+Unpacking libapparmor1:amd64 (2.13.2-10) ...
+Selecting previously unselected package libargon2-1:amd64.
+Preparing to unpack .../1-libargon2-1_0~20171227-0.2_amd64.deb ...
+Unpacking libargon2-1:amd64 (0~20171227-0.2) ...
+Selecting previously unselected package dmsetup.
+Preparing to unpack .../2-dmsetup_2%3a1.02.155-3_amd64.deb ...
+Unpacking dmsetup (2:1.02.155-3) ...
+Selecting previously unselected package libdevmapper1.02.1:amd64.
+Preparing to unpack .../3-libdevmapper1.02.1_2%3a1.02.155-3_amd64.deb ...
+Unpacking libdevmapper1.02.1:amd64 (2:1.02.155-3) ...
+Selecting previously unselected package libjson-c3:amd64.
+Preparing to unpack .../4-libjson-c3_0.12.1+ds-2+deb10u1_amd64.deb ...
+Unpacking libjson-c3:amd64 (0.12.1+ds-2+deb10u1) ...
+Selecting previously unselected package libcryptsetup12:amd64.
+Preparing to unpack .../5-libcryptsetup12_2%3a2.1.0-5+deb10u2_amd64.deb ...
+Unpacking libcryptsetup12:amd64 (2:2.1.0-5+deb10u2) ...
+Selecting previously unselected package libidn11:amd64.
+Preparing to unpack .../6-libidn11_1.33-2.2_amd64.deb ...
+Unpacking libidn11:amd64 (1.33-2.2) ...
+Selecting previously unselected package libip4tc0:amd64.
+Preparing to unpack .../7-libip4tc0_1.8.2-4_amd64.deb ...
+Unpacking libip4tc0:amd64 (1.8.2-4) ...
+Selecting previously unselected package libkmod2:amd64.
+Preparing to unpack .../8-libkmod2_26-1_amd64.deb ...
+Unpacking libkmod2:amd64 (26-1) ...
+Selecting previously unselected package systemd.
+Preparing to unpack .../9-systemd_241-7~deb10u7_amd64.deb ...
+Unpacking systemd (241-7~deb10u7) ...
+Setting up libapparmor1:amd64 (2.13.2-10) ...
+Setting up libargon2-1:amd64 (0~20171227-0.2) ...
+Setting up libjson-c3:amd64 (0.12.1+ds-2+deb10u1) ...
+Setting up libidn11:amd64 (1.33-2.2) ...
+Setting up libip4tc0:amd64 (1.8.2-4) ...
+Setting up libkmod2:amd64 (26-1) ...
+Setting up libdevmapper1.02.1:amd64 (2:1.02.155-3) ...
+Setting up libcryptsetup12:amd64 (2:2.1.0-5+deb10u2) ...
+Setting up systemd (241-7~deb10u7) ...
+Created symlink /etc/systemd/system/getty.target.wants/getty@tty1.service → /lib/systemd/system/getty@.service.
+Created symlink /etc/systemd/system/multi-user.target.wants/remote-fs.target → /lib/systemd/system/remote-fs.target.
+Created symlink /etc/systemd/system/dbus-org.freedesktop.timesync1.service → /lib/systemd/system/systemd-timesyncd.service.
+Created symlink /etc/systemd/system/sysinit.target.wants/systemd-timesyncd.service → /lib/systemd/system/systemd-timesyncd.service.
+Setting up dmsetup (2:1.02.155-3) ...
+Selecting previously unselected package systemd-sysv.
+(Reading database ... 15299 files and directories currently installed.)
+Preparing to unpack .../00-systemd-sysv_241-7~deb10u7_amd64.deb ...
+Unpacking systemd-sysv (241-7~deb10u7) ...
+Selecting previously unselected package libdbus-1-3:amd64.
+Preparing to unpack .../01-libdbus-1-3_1.12.20-0+deb10u1_amd64.deb ...
+Unpacking libdbus-1-3:amd64 (1.12.20-0+deb10u1) ...
+Selecting previously unselected package dbus.
+Preparing to unpack .../02-dbus_1.12.20-0+deb10u1_amd64.deb ...
+Unpacking dbus (1.12.20-0+deb10u1) ...
+Selecting previously unselected package libnss-systemd:amd64.
+Preparing to unpack .../03-libnss-systemd_241-7~deb10u7_amd64.deb ...
+Unpacking libnss-systemd:amd64 (241-7~deb10u7) ...
+Selecting previously unselected package libpam-systemd:amd64.
+Preparing to unpack .../04-libpam-systemd_241-7~deb10u7_amd64.deb ...
+Unpacking libpam-systemd:amd64 (241-7~deb10u7) ...
+Selecting previously unselected package ncurses-term.
+Preparing to unpack .../05-ncurses-term_6.1+20181013-2+deb10u2_all.deb ...
+Unpacking ncurses-term (6.1+20181013-2+deb10u2) ...
+Selecting previously unselected package libwrap0:amd64.
+Preparing to unpack .../06-libwrap0_7.6.q-28_amd64.deb ...
+Unpacking libwrap0:amd64 (7.6.q-28) ...
+Selecting previously unselected package libxau6:amd64.
+Preparing to unpack .../07-libxau6_1%3a1.0.8-1+b2_amd64.deb ...
+Unpacking libxau6:amd64 (1:1.0.8-1+b2) ...
+Selecting previously unselected package libxdmcp6:amd64.
+Preparing to unpack .../08-libxdmcp6_1%3a1.1.2-3_amd64.deb ...
+Unpacking libxdmcp6:amd64 (1:1.1.2-3) ...
+Selecting previously unselected package libxcb1:amd64.
+Preparing to unpack .../09-libxcb1_1.13.1-2_amd64.deb ...
+Unpacking libxcb1:amd64 (1.13.1-2) ...
+Selecting previously unselected package libx11-data.
+Preparing to unpack .../10-libx11-data_2%3a1.6.7-1+deb10u2_all.deb ...
+Unpacking libx11-data (2:1.6.7-1+deb10u2) ...
+Selecting previously unselected package libx11-6:amd64.
+Preparing to unpack .../11-libx11-6_2%3a1.6.7-1+deb10u2_amd64.deb ...
+Unpacking libx11-6:amd64 (2:1.6.7-1+deb10u2) ...
+Selecting previously unselected package libxext6:amd64.
+Preparing to unpack .../12-libxext6_2%3a1.3.3-1+b2_amd64.deb ...
+Unpacking libxext6:amd64 (2:1.3.3-1+b2) ...
+Selecting previously unselected package libxmuu1:amd64.
+Preparing to unpack .../13-libxmuu1_2%3a1.1.2-2+b3_amd64.deb ...
+Unpacking libxmuu1:amd64 (2:1.1.2-2+b3) ...
+Selecting previously unselected package openssh-sftp-server.
+Preparing to unpack .../14-openssh-sftp-server_1%3a7.9p1-10+deb10u2_amd64.deb ...
+Unpacking openssh-sftp-server (1:7.9p1-10+deb10u2) ...
+Selecting previously unselected package openssh-server.
+Preparing to unpack .../15-openssh-server_1%3a7.9p1-10+deb10u2_amd64.deb ...
+Unpacking openssh-server (1:7.9p1-10+deb10u2) ...
+Selecting previously unselected package xauth.
+Preparing to unpack .../16-xauth_1%3a1.0.10-1_amd64.deb ...
+Unpacking xauth (1:1.0.10-1) ...
+Setting up openssh-sftp-server (1:7.9p1-10+deb10u2) ...
+Setting up systemd-sysv (241-7~deb10u7) ...
+Setting up libxau6:amd64 (1:1.0.8-1+b2) ...
+Setting up libxdmcp6:amd64 (1:1.1.2-3) ...
+Setting up libxcb1:amd64 (1.13.1-2) ...
+Setting up libnss-systemd:amd64 (241-7~deb10u7) ...
+First installation detected...
+Checking NSS setup...
+Setting up libwrap0:amd64 (7.6.q-28) ...
+Setting up libx11-data (2:1.6.7-1+deb10u2) ...
+Setting up libdbus-1-3:amd64 (1.12.20-0+deb10u1) ...
+Setting up dbus (1.12.20-0+deb10u1) ...
+invoke-rc.d: could not determine current runlevel
+invoke-rc.d: policy-rc.d denied execution of start.
+Setting up libpam-systemd:amd64 (241-7~deb10u7) ...
+debconf: unable to initialize frontend: Dialog
+debconf: (No usable dialog-like program is installed, so the dialog based frontend cannot be used. at /usr/share/perl5/Debconf/FrontEnd/Dialog.pm line 76.)
+debconf: falling back to frontend: Readline
+Setting up libx11-6:amd64 (2:1.6.7-1+deb10u2) ...
+Setting up libxmuu1:amd64 (2:1.1.2-2+b3) ...
+Setting up ncurses-term (6.1+20181013-2+deb10u2) ...
+Setting up openssh-server (1:7.9p1-10+deb10u2) ...
+debconf: unable to initialize frontend: Dialog
+debconf: (No usable dialog-like program is installed, so the dialog based frontend cannot be used. at /usr/share/perl5/Debconf/FrontEnd/Dialog.pm line 76.)
+debconf: falling back to frontend: Readline
+
+Creating config file /etc/ssh/sshd_config with new version
+Creating SSH2 RSA key; this may take some time ...
+2048 SHA256:sW7safq2HX0wP+yT9duqO4q3ulb2qgfrjbvN50sWOBU root@c3b202ce15e1 (RSA)
+Creating SSH2 ECDSA key; this may take some time ...
+256 SHA256:Uj4vrxZczmMKOhTcEXsXfUasJ3UcEZRSua2o6FSBA8A root@c3b202ce15e1 (ECDSA)
+Creating SSH2 ED25519 key; this may take some time ...
+256 SHA256:uTum4eOC4w4OI0FPdq32vI2jOgdzMXPqSrLuJWt5JZM root@c3b202ce15e1 (ED25519)
+Created symlink /etc/systemd/system/sshd.service → /lib/systemd/system/ssh.service.
+Created symlink /etc/systemd/system/multi-user.target.wants/ssh.service → /lib/systemd/system/ssh.service.
+invoke-rc.d: could not determine current runlevel
+invoke-rc.d: policy-rc.d denied execution of start.
+Setting up libxext6:amd64 (2:1.3.3-1+b2) ...
+Setting up xauth (1:1.0.10-1) ...
+Processing triggers for systemd (241-7~deb10u7) ...
+Processing triggers for libc-bin (2.28-10) ...
+root@c3b202ce15e1:/usr/local/tomcat/bin# exit
+exit
+
+C:\Users\Selvi>docker ps
+CONTAINER ID   IMAGE                       COMMAND                  CREATED          STATUS          PORTS                                                                                      NAMESc3b202ce15e1   tomcat                      "/bin/bash"              22 minutes ago   Up 22 minutes   0.0.0.0:9090->8080/tcp, :::9090->8080/tcp                                                  tomcat-3
+2b7d4434223b   jenkins/jenkins:lts-jdk11   "/sbin/tini -- /usr/…"   3 days ago       Up 6 hours      0.0.0.0:8080->8080/tcp, :::8080->8080/tcp, 0.0.0.0:50000->50000/tcp, :::50000->50000/tcp   kind_dewdney
+
+C:\Users\Selvi>doxker exec -it -u root 2b7d4434223b /bin/bash
+'doxker' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\Users\Selvi>docker exec -it -u root 2b7d4434223b /bin/bash
+root@2b7d4434223b:/# cd /var/jenkins_home/
+root@2b7d4434223b:/var/jenkins_home# cd workspace/demo/target/
+root@2b7d4434223b:/var/jenkins_home/workspace/demo/target# ls
+Ambith  Ambith.war  maven-archiver
+root@2b7d4434223b:/var/jenkins_home/workspace/demo/target# scp Ambith.war root:172.17.0.3:/opt/tomcat/apache-tomcat-9.0.46/webapps/
+ssh: Could not resolve hostname root: Temporary failure in name resolution
+lost connection
+root@2b7d4434223b:/var/jenkins_home/workspace/demo/target# exit
+exit
+
+C:\Users\Selvi>docker ps
+CONTAINER ID   IMAGE                       COMMAND                  CREATED          STATUS          PORTS                                                                                      NAMESc3b202ce15e1   tomcat                      "/bin/bash"              24 minutes ago   Up 24 minutes   0.0.0.0:9090->8080/tcp, :::9090->8080/tcp                                                  tomcat-3
+2b7d4434223b   jenkins/jenkins:lts-jdk11   "/sbin/tini -- /usr/…"   3 days ago       Up 6 hours      0.0.0.0:8080->8080/tcp, :::8080->8080/tcp, 0.0.0.0:50000->50000/tcp, :::50000->50000/tcp   kind_dewdney
+
+C:\Users\Selvi>docker exec -it -u root c3b202ce15e1 /bin/bash
+root@c3b202ce15e1:/usr/local/tomcat# service sshd start
+sshd: unrecognized service
+root@c3b202ce15e1:/usr/local/tomcat# /etc/init.d/ssh start
+[ ok ] Starting OpenBSD Secure Shell server: sshd.
+root@c3b202ce15e1:/usr/local/tomcat# eixt
+bash: eixt: command not found
+root@c3b202ce15e1:/usr/local/tomcat# docker exec -it -u root 2b7d4434223b /bin/bash
+bash: docker: command not found
+root@c3b202ce15e1:/usr/local/tomcat# exit
+exit
+
+C:\Users\Selvi>docker exec -it -u root 2b7d4434223b  /bin/bash
+root@2b7d4434223b:/# cd /var/jenkins_home/workspace/demo/target/
+root@2b7d4434223b:/var/jenkins_home/workspace/demo/target# ls
+Ambith  Ambith.war  maven-archiver
+root@2b7d4434223b:/var/jenkins_home/workspace/demo/target# scp Ambith.war root@172.17.0.3:/opt/tomcat/apache-tomcat-9.0.46/webapps/
+The authenticity of host '172.17.0.3 (172.17.0.3)' can't be established.
+ECDSA key fingerprint is SHA256:Uj4vrxZczmMKOhTcEXsXfUasJ3UcEZRSua2o6FSBA8A.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added '172.17.0.3' (ECDSA) to the list of known hosts.
+root@172.17.0.3's password:
+Permission denied, please try again.
+root@172.17.0.3's password:
+Permission denied, please try again.
+root@172.17.0.3's password:
+root@2b7d4434223b:/var/jenkins_home/workspace/demo/target#
+root@2b7d4434223b:/var/jenkins_home/workspace/demo/target# scp Ambith.war root@172.17.0.3:/tmp/
+root@172.17.0.3's password:
+Permission denied, please try again.
+root@172.17.0.3's password:
+root@2b7d4434223b:/var/jenkins_home/workspace/demo/target# exit
+exit
+
+C:\Users\Selvi>docker exec -it -u root c3b202ce15e1 /bin/bash
+root@c3b202ce15e1:/usr/local/tomcat# passwd
+New password:
+Retype new password:
+passwd: password updated successfully
+root@c3b202ce15e1:/usr/local/tomcat# exit
+exit
+
+C:\Users\Selvi>docker exec -it -u root 2b7d4434223b /bin/bash
+root@2b7d4434223b:/# cd
+root@2b7d4434223b:~# ls
+root@2b7d4434223b:~# cd /var/jenkins_home/workspace/demo/target/
+root@2b7d4434223b:/var/jenkins_home/workspace/demo/target# scp Ambith.war root@172.17.0.3:/opt/tomcat/apache-tomcat-9.0.46/webapps/
+root@172.17.0.3's password:
+Permission denied, please try again.
+root@172.17.0.3's password:
+root@2b7d4434223b:/var/jenkins_home/workspace/demo/target# exit
+exit
+
+C:\Users\Selvi>docker exec -it -u root 2b7d4434223b /bin/bash
+
+C:\Users\Selvi>docker ps
+CONTAINER ID   IMAGE                       COMMAND                  CREATED          STATUS          PORTS                                                                                      NAMESc3b202ce15e1   tomcat                      "/bin/bash"              32 minutes ago   Up 32 minutes   0.0.0.0:9090->8080/tcp, :::9090->8080/tcp                                                  tomcat-3
+2b7d4434223b   jenkins/jenkins:lts-jdk11   "/sbin/tini -- /usr/…"   3 days ago       Up 7 hours      0.0.0.0:8080->8080/tcp, :::8080->8080/tcp, 0.0.0.0:50000->50000/tcp, :::50000->50000/tcp   kind_dewdney
+
+C:\Users\Selvi>docker exec -it -u root c3b202ce15e1 /bin/bash
+root@c3b202ce15e1:/usr/local/tomcat# ip addr
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+2: sit0@NONE: <NOARP> mtu 1480 qdisc noop state DOWN group default qlen 1000
+    link/sit 0.0.0.0 brd 0.0.0.0
+20: eth0@if21: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default
+    link/ether 02:42:ac:11:00:03 brd ff:ff:ff:ff:ff:ff link-netnsid 0
+    inet 172.17.0.3/16 brd 172.17.255.255 scope global eth0
+       valid_lft forever preferred_lft forever
+root@c3b202ce15e1:/usr/local/tomcat# exit
+exit
+
+C:\Users\Selvi>docker exec -it -u root 2b7d4434223b  /bin/bash
+root@2b7d4434223b:/# ip addr
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+2: sit0@NONE: <NOARP> mtu 1480 qdisc noop state DOWN group default qlen 1000
+    link/sit 0.0.0.0 brd 0.0.0.0
+8: eth0@if9: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default
+    link/ether 02:42:ac:11:00:02 brd ff:ff:ff:ff:ff:ff link-netnsid 0
+    inet 172.17.0.2/16 brd 172.17.255.255 scope global eth0
+       valid_lft forever preferred_lft forever
+root@2b7d4434223b:/# exit
+exit
+
+C:\Users\Selvi>docker container stop c3b202ce15e1
+c3b202ce15e1
+
+C:\Users\Selvi>docker container stop c3b202ce15e1
+
+C:\Users\Selvi>docker run -itd --name tomcat-4 -u root -p 8000:8000 tomcat /bin/bash
+11ababe8c51e3cab2b44b5d2274a5f0ff88bf2e655f830f58ff8eb6b2c4e3088
+
+C:\Users\Selvi>docker exec -it tomcat-4 /bin/bash
+root@11ababe8c51e:/usr/local/tomcat# cd
+root@11ababe8c51e:~# ls
+root@11ababe8c51e:~# cd /usr/local/tomcat/conf/
+root@11ababe8c51e:/usr/local/tomcat/conf# ls
+catalina.policy  catalina.properties  context.xml  jaspic-providers.xml  jaspic-providers.xsd  logging.properties  server.xml  tomcat-users.xml  tomcat-users.xsd  web.xml
+root@11ababe8c51e:/usr/local/tomcat/conf# vi server.xml
+bash: vi: command not found
+root@11ababe8c51e:/usr/local/tomcat/conf# apt-get update
+Get:1 http://deb.debian.org/debian buster InRelease [121 kB]
+Get:2 http://security.debian.org/debian-security buster/updates InRelease [65.4 kB]
+Get:3 http://deb.debian.org/debian buster-updates InRelease [51.9 kB]
+Get:4 http://deb.debian.org/debian buster/main amd64 Packages [7907 kB]
+Get:5 http://security.debian.org/debian-security buster/updates/main amd64 Packages [291 kB]
+Get:6 http://deb.debian.org/debian buster-updates/main amd64 Packages [10.9 kB]
+Fetched 8447 kB in 4s (2366 kB/s)
+Reading package lists... Done
+root@11ababe8c51e:/usr/local/tomcat/conf# apt-get install vim
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+The following additional packages will be installed:
+  libgpm2 vim-common vim-runtime xxd
+Suggested packages:
+  gpm ctags vim-doc vim-scripts
+The following NEW packages will be installed:
+  libgpm2 vim vim-common vim-runtime xxd
+0 upgraded, 5 newly installed, 0 to remove and 1 not upgraded.
+Need to get 7425 kB of archives.
+After this operation, 33.8 MB of additional disk space will be used.
+Do you want to continue? [Y/n] Y
+Get:1 http://deb.debian.org/debian buster/main amd64 xxd amd64 2:8.1.0875-5 [140 kB]
+Get:2 http://deb.debian.org/debian buster/main amd64 vim-common all 2:8.1.0875-5 [195 kB]
+Get:3 http://deb.debian.org/debian buster/main amd64 libgpm2 amd64 1.20.7-5 [35.1 kB]
+Get:4 http://deb.debian.org/debian buster/main amd64 vim-runtime all 2:8.1.0875-5 [5775 kB]
+Get:5 http://deb.debian.org/debian buster/main amd64 vim amd64 2:8.1.0875-5 [1280 kB]
+Fetched 7425 kB in 2s (3320 kB/s)
+debconf: delaying package configuration, since apt-utils is not installed
+Selecting previously unselected package xxd.
+(Reading database ... 12572 files and directories currently installed.)
+Preparing to unpack .../xxd_2%3a8.1.0875-5_amd64.deb ...
+Unpacking xxd (2:8.1.0875-5) ...
+Selecting previously unselected package vim-common.
+Preparing to unpack .../vim-common_2%3a8.1.0875-5_all.deb ...
+Unpacking vim-common (2:8.1.0875-5) ...
+Selecting previously unselected package libgpm2:amd64.
+Preparing to unpack .../libgpm2_1.20.7-5_amd64.deb ...
+Unpacking libgpm2:amd64 (1.20.7-5) ...
+Selecting previously unselected package vim-runtime.
+Preparing to unpack .../vim-runtime_2%3a8.1.0875-5_all.deb ...
+Adding 'diversion of /usr/share/vim/vim81/doc/help.txt to /usr/share/vim/vim81/doc/help.txt.vim-tiny by vim-runtime'
+Adding 'diversion of /usr/share/vim/vim81/doc/tags to /usr/share/vim/vim81/doc/tags.vim-tiny by vim-runtime'
+Unpacking vim-runtime (2:8.1.0875-5) ...
+Selecting previously unselected package vim.
+Preparing to unpack .../vim_2%3a8.1.0875-5_amd64.deb ...
+Unpacking vim (2:8.1.0875-5) ...
+Setting up libgpm2:amd64 (1.20.7-5) ...
+Setting up xxd (2:8.1.0875-5) ...
+Setting up vim-common (2:8.1.0875-5) ...
+Setting up vim-runtime (2:8.1.0875-5) ...
+Setting up vim (2:8.1.0875-5) ...
+update-alternatives: using /usr/bin/vim.basic to provide /usr/bin/vim (vim) in auto mode
+update-alternatives: using /usr/bin/vim.basic to provide /usr/bin/vimdiff (vimdiff) in auto mode
+update-alternatives: using /usr/bin/vim.basic to provide /usr/bin/rvim (rvim) in auto mode
+update-alternatives: using /usr/bin/vim.basic to provide /usr/bin/rview (rview) in auto mode
+update-alternatives: using /usr/bin/vim.basic to provide /usr/bin/vi (vi) in auto mode
+update-alternatives: using /usr/bin/vim.basic to provide /usr/bin/view (view) in auto mode
+update-alternatives: using /usr/bin/vim.basic to provide /usr/bin/ex (ex) in auto mode
+update-alternatives: using /usr/bin/vim.basic to provide /usr/bin/editor (editor) in auto mode
+Processing triggers for libc-bin (2.28-10) ...
+Processing triggers for mime-support (3.62) ...
+root@11ababe8c51e:/usr/local/tomcat/conf# vi server.xml
+root@11ababe8c51e:/usr/local/tomcat/conf# cd ../bin/
+root@11ababe8c51e:/usr/local/tomcat/bin# ls
+bootstrap.jar       catalina.sh  commons-daemon-native.tar.gz  configtest.sh  digest.sh    setclasspath.sh  startup.sh       tool-wrapper.sh
+catalina-tasks.xml  ciphers.sh   commons-daemon.jar            daemon.sh      makebase.sh  shutdown.sh      tomcat-juli.jar  version.sh
+root@11ababe8c51e:/usr/local/tomcat/bin# ./startup.sh
+Using CATALINA_BASE:   /usr/local/tomcat
+Using CATALINA_HOME:   /usr/local/tomcat
+Using CATALINA_TMPDIR: /usr/local/tomcat/temp
+Using JRE_HOME:        /usr/local/openjdk-11
+Using CLASSPATH:       /usr/local/tomcat/bin/bootstrap.jar:/usr/local/tomcat/bin/tomcat-juli.jar
+Using CATALINA_OPTS:
+Tomcat started.
+root@11ababe8c51e:/usr/local/tomcat/bin# exit
+exit
+
+C:\Users\Selvi>docker ps
+CONTAINER ID   IMAGE                       COMMAND                  CREATED         STATUS         PORTS                                                                                      NAMES
+11ababe8c51e   tomcat                      "/bin/bash"              2 minutes ago   Up 2 minutes   0.0.0.0:8000->8000/tcp, :::8000->8000/tcp, 8080/tcp                                        tomcat-4
+2b7d4434223b   jenkins/jenkins:lts-jdk11   "/sbin/tini -- /usr/…"   3 days ago      Up 7 hours     0.0.0.0:8080->8080/tcp, :::8080->8080/tcp, 0.0.0.0:50000->50000/tcp, :::50000->50000/tcp   kind_dewdney
+
+C:\Users\Selvi>docker exec -it -u root 11ababe8c51e /bin/bash
+root@11ababe8c51e:/usr/local/tomcat# apt-get install openssh-server
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+The following additional packages will be installed:
+  dbus dmsetup libapparmor1 libargon2-1 libcryptsetup12 libdbus-1-3 libdevmapper1.02.1 libidn11 libip4tc0 libjson-c3 libkmod2 libnss-systemd libpam-systemd libwrap0 libx11-6 libx11-data libxau6
+  libxcb1 libxdmcp6 libxext6 libxmuu1 ncurses-term openssh-sftp-server systemd systemd-sysv xauth
+Suggested packages:
+  default-dbus-session-bus | dbus-session-bus molly-guard monkeysphere rssh ssh-askpass ufw systemd-container policykit-1
+The following NEW packages will be installed:
+  dbus dmsetup libapparmor1 libargon2-1 libcryptsetup12 libdbus-1-3 libdevmapper1.02.1 libidn11 libip4tc0 libjson-c3 libkmod2 libnss-systemd libpam-systemd libwrap0 libx11-6 libx11-data libxau6
+  libxcb1 libxdmcp6 libxext6 libxmuu1 ncurses-term openssh-server openssh-sftp-server systemd systemd-sysv xauth
+0 upgraded, 27 newly installed, 0 to remove and 1 not upgraded.
+Need to get 7570 kB of archives.
+After this operation, 27.9 MB of additional disk space will be used.
+Do you want to continue? [Y/n] y
+Get:1 http://security.debian.org/debian-security buster/updates/main amd64 libx11-data all 2:1.6.7-1+deb10u2 [299 kB]
+Get:2 http://deb.debian.org/debian buster/main amd64 libapparmor1 amd64 2.13.2-10 [94.7 kB]
+Get:3 http://deb.debian.org/debian buster/main amd64 libargon2-1 amd64 0~20171227-0.2 [19.6 kB]
+Get:4 http://deb.debian.org/debian buster/main amd64 dmsetup amd64 2:1.02.155-3 [90.8 kB]
+Get:5 http://security.debian.org/debian-security buster/updates/main amd64 libx11-6 amd64 2:1.6.7-1+deb10u2 [757 kB]
+Get:6 http://deb.debian.org/debian buster/main amd64 libdevmapper1.02.1 amd64 2:1.02.155-3 [141 kB]
+Get:7 http://deb.debian.org/debian buster/main amd64 libjson-c3 amd64 0.12.1+ds-2+deb10u1 [27.3 kB]
+Get:8 http://deb.debian.org/debian buster/main amd64 libcryptsetup12 amd64 2:2.1.0-5+deb10u2 [193 kB]
+Get:9 http://deb.debian.org/debian buster/main amd64 libidn11 amd64 1.33-2.2 [116 kB]
+Get:10 http://deb.debian.org/debian buster/main amd64 libip4tc0 amd64 1.8.2-4 [70.2 kB]
+Get:11 http://deb.debian.org/debian buster/main amd64 libkmod2 amd64 26-1 [52.7 kB]
+Get:12 http://deb.debian.org/debian buster/main amd64 systemd amd64 241-7~deb10u7 [3499 kB]
+Get:13 http://deb.debian.org/debian buster/main amd64 systemd-sysv amd64 241-7~deb10u7 [100 kB]
+Get:14 http://deb.debian.org/debian buster/main amd64 libdbus-1-3 amd64 1.12.20-0+deb10u1 [215 kB]
+Get:15 http://deb.debian.org/debian buster/main amd64 dbus amd64 1.12.20-0+deb10u1 [236 kB]
+Get:16 http://deb.debian.org/debian buster/main amd64 libnss-systemd amd64 241-7~deb10u7 [205 kB]
+Get:17 http://deb.debian.org/debian buster/main amd64 libpam-systemd amd64 241-7~deb10u7 [209 kB]
+Get:18 http://deb.debian.org/debian buster/main amd64 ncurses-term all 6.1+20181013-2+deb10u2 [490 kB]
+Get:19 http://deb.debian.org/debian buster/main amd64 libwrap0 amd64 7.6.q-28 [58.7 kB]
+Get:20 http://deb.debian.org/debian buster/main amd64 libxau6 amd64 1:1.0.8-1+b2 [19.9 kB]
+Get:21 http://deb.debian.org/debian buster/main amd64 libxdmcp6 amd64 1:1.1.2-3 [26.3 kB]
+Get:22 http://deb.debian.org/debian buster/main amd64 libxcb1 amd64 1.13.1-2 [137 kB]
+Get:23 http://deb.debian.org/debian buster/main amd64 libxext6 amd64 2:1.3.3-1+b2 [52.5 kB]
+Get:24 http://deb.debian.org/debian buster/main amd64 libxmuu1 amd64 2:1.1.2-2+b3 [23.9 kB]
+Get:25 http://deb.debian.org/debian buster/main amd64 openssh-sftp-server amd64 1:7.9p1-10+deb10u2 [44.6 kB]
+Get:26 http://deb.debian.org/debian buster/main amd64 openssh-server amd64 1:7.9p1-10+deb10u2 [352 kB]
+Get:27 http://deb.debian.org/debian buster/main amd64 xauth amd64 1:1.0.10-1 [40.3 kB]
+Fetched 7570 kB in 2s (3080 kB/s)
+debconf: delaying package configuration, since apt-utils is not installed
+Selecting previously unselected package libapparmor1:amd64.
+(Reading database ... 14467 files and directories currently installed.)
+Preparing to unpack .../0-libapparmor1_2.13.2-10_amd64.deb ...
+Unpacking libapparmor1:amd64 (2.13.2-10) ...
+Selecting previously unselected package libargon2-1:amd64.
+Preparing to unpack .../1-libargon2-1_0~20171227-0.2_amd64.deb ...
+Unpacking libargon2-1:amd64 (0~20171227-0.2) ...
+Selecting previously unselected package dmsetup.
+Preparing to unpack .../2-dmsetup_2%3a1.02.155-3_amd64.deb ...
+Unpacking dmsetup (2:1.02.155-3) ...
+Selecting previously unselected package libdevmapper1.02.1:amd64.
+Preparing to unpack .../3-libdevmapper1.02.1_2%3a1.02.155-3_amd64.deb ...
+Unpacking libdevmapper1.02.1:amd64 (2:1.02.155-3) ...
+Selecting previously unselected package libjson-c3:amd64.
+Preparing to unpack .../4-libjson-c3_0.12.1+ds-2+deb10u1_amd64.deb ...
+Unpacking libjson-c3:amd64 (0.12.1+ds-2+deb10u1) ...
+Selecting previously unselected package libcryptsetup12:amd64.
+Preparing to unpack .../5-libcryptsetup12_2%3a2.1.0-5+deb10u2_amd64.deb ...
+Unpacking libcryptsetup12:amd64 (2:2.1.0-5+deb10u2) ...
+Selecting previously unselected package libidn11:amd64.
+Preparing to unpack .../6-libidn11_1.33-2.2_amd64.deb ...
+Unpacking libidn11:amd64 (1.33-2.2) ...
+Selecting previously unselected package libip4tc0:amd64.
+Preparing to unpack .../7-libip4tc0_1.8.2-4_amd64.deb ...
+Unpacking libip4tc0:amd64 (1.8.2-4) ...
+Selecting previously unselected package libkmod2:amd64.
+Preparing to unpack .../8-libkmod2_26-1_amd64.deb ...
+Unpacking libkmod2:amd64 (26-1) ...
+Selecting previously unselected package systemd.
+Preparing to unpack .../9-systemd_241-7~deb10u7_amd64.deb ...
+Unpacking systemd (241-7~deb10u7) ...
+Setting up libapparmor1:amd64 (2.13.2-10) ...
+Setting up libargon2-1:amd64 (0~20171227-0.2) ...
+Setting up libjson-c3:amd64 (0.12.1+ds-2+deb10u1) ...
+Setting up libidn11:amd64 (1.33-2.2) ...
+Setting up libip4tc0:amd64 (1.8.2-4) ...
+Setting up libkmod2:amd64 (26-1) ...
+Setting up libdevmapper1.02.1:amd64 (2:1.02.155-3) ...
+Setting up libcryptsetup12:amd64 (2:2.1.0-5+deb10u2) ...
+Setting up systemd (241-7~deb10u7) ...
+Created symlink /etc/systemd/system/getty.target.wants/getty@tty1.service → /lib/systemd/system/getty@.service.
+Created symlink /etc/systemd/system/multi-user.target.wants/remote-fs.target → /lib/systemd/system/remote-fs.target.
+Created symlink /etc/systemd/system/dbus-org.freedesktop.timesync1.service → /lib/systemd/system/systemd-timesyncd.service.
+Created symlink /etc/systemd/system/sysinit.target.wants/systemd-timesyncd.service → /lib/systemd/system/systemd-timesyncd.service.
+Setting up dmsetup (2:1.02.155-3) ...
+Selecting previously unselected package systemd-sysv.
+(Reading database ... 15299 files and directories currently installed.)
+Preparing to unpack .../00-systemd-sysv_241-7~deb10u7_amd64.deb ...
+Unpacking systemd-sysv (241-7~deb10u7) ...
+Selecting previously unselected package libdbus-1-3:amd64.
+Preparing to unpack .../01-libdbus-1-3_1.12.20-0+deb10u1_amd64.deb ...
+Unpacking libdbus-1-3:amd64 (1.12.20-0+deb10u1) ...
+Selecting previously unselected package dbus.
+Preparing to unpack .../02-dbus_1.12.20-0+deb10u1_amd64.deb ...
+Unpacking dbus (1.12.20-0+deb10u1) ...
+Selecting previously unselected package libnss-systemd:amd64.
+Preparing to unpack .../03-libnss-systemd_241-7~deb10u7_amd64.deb ...
+Unpacking libnss-systemd:amd64 (241-7~deb10u7) ...
+Selecting previously unselected package libpam-systemd:amd64.
+Preparing to unpack .../04-libpam-systemd_241-7~deb10u7_amd64.deb ...
+Unpacking libpam-systemd:amd64 (241-7~deb10u7) ...
+Selecting previously unselected package ncurses-term.
+Preparing to unpack .../05-ncurses-term_6.1+20181013-2+deb10u2_all.deb ...
+Unpacking ncurses-term (6.1+20181013-2+deb10u2) ...
+Selecting previously unselected package libwrap0:amd64.
+Preparing to unpack .../06-libwrap0_7.6.q-28_amd64.deb ...
+Unpacking libwrap0:amd64 (7.6.q-28) ...
+Selecting previously unselected package libxau6:amd64.
+Preparing to unpack .../07-libxau6_1%3a1.0.8-1+b2_amd64.deb ...
+Unpacking libxau6:amd64 (1:1.0.8-1+b2) ...
+Selecting previously unselected package libxdmcp6:amd64.
+Preparing to unpack .../08-libxdmcp6_1%3a1.1.2-3_amd64.deb ...
+Unpacking libxdmcp6:amd64 (1:1.1.2-3) ...
+Selecting previously unselected package libxcb1:amd64.
+Preparing to unpack .../09-libxcb1_1.13.1-2_amd64.deb ...
+Unpacking libxcb1:amd64 (1.13.1-2) ...
+Selecting previously unselected package libx11-data.
+Preparing to unpack .../10-libx11-data_2%3a1.6.7-1+deb10u2_all.deb ...
+Unpacking libx11-data (2:1.6.7-1+deb10u2) ...
+Selecting previously unselected package libx11-6:amd64.
+Preparing to unpack .../11-libx11-6_2%3a1.6.7-1+deb10u2_amd64.deb ...
+Unpacking libx11-6:amd64 (2:1.6.7-1+deb10u2) ...
+Selecting previously unselected package libxext6:amd64.
+Preparing to unpack .../12-libxext6_2%3a1.3.3-1+b2_amd64.deb ...
+Unpacking libxext6:amd64 (2:1.3.3-1+b2) ...
+Selecting previously unselected package libxmuu1:amd64.
+Preparing to unpack .../13-libxmuu1_2%3a1.1.2-2+b3_amd64.deb ...
+Unpacking libxmuu1:amd64 (2:1.1.2-2+b3) ...
+Selecting previously unselected package openssh-sftp-server.
+Preparing to unpack .../14-openssh-sftp-server_1%3a7.9p1-10+deb10u2_amd64.deb ...
+Unpacking openssh-sftp-server (1:7.9p1-10+deb10u2) ...
+Selecting previously unselected package openssh-server.
+Preparing to unpack .../15-openssh-server_1%3a7.9p1-10+deb10u2_amd64.deb ...
+Unpacking openssh-server (1:7.9p1-10+deb10u2) ...
+Selecting previously unselected package xauth.
+Preparing to unpack .../16-xauth_1%3a1.0.10-1_amd64.deb ...
+Unpacking xauth (1:1.0.10-1) ...
+Setting up openssh-sftp-server (1:7.9p1-10+deb10u2) ...
+Setting up systemd-sysv (241-7~deb10u7) ...
+Setting up libxau6:amd64 (1:1.0.8-1+b2) ...
+Setting up libxdmcp6:amd64 (1:1.1.2-3) ...
+Setting up libxcb1:amd64 (1.13.1-2) ...
+Setting up libnss-systemd:amd64 (241-7~deb10u7) ...
+First installation detected...
+Checking NSS setup...
+Setting up libwrap0:amd64 (7.6.q-28) ...
+Setting up libx11-data (2:1.6.7-1+deb10u2) ...
+Setting up libdbus-1-3:amd64 (1.12.20-0+deb10u1) ...
+Setting up dbus (1.12.20-0+deb10u1) ...
+invoke-rc.d: could not determine current runlevel
+invoke-rc.d: policy-rc.d denied execution of start.
+Setting up libpam-systemd:amd64 (241-7~deb10u7) ...
+debconf: unable to initialize frontend: Dialog
+debconf: (No usable dialog-like program is installed, so the dialog based frontend cannot be used. at /usr/share/perl5/Debconf/FrontEnd/Dialog.pm line 76.)
+debconf: falling back to frontend: Readline
+Setting up libx11-6:amd64 (2:1.6.7-1+deb10u2) ...
+Setting up libxmuu1:amd64 (2:1.1.2-2+b3) ...
+Setting up ncurses-term (6.1+20181013-2+deb10u2) ...
+Setting up openssh-server (1:7.9p1-10+deb10u2) ...
+debconf: unable to initialize frontend: Dialog
+debconf: (No usable dialog-like program is installed, so the dialog based frontend cannot be used. at /usr/share/perl5/Debconf/FrontEnd/Dialog.pm line 76.)
+debconf: falling back to frontend: Readline
+
+Creating config file /etc/ssh/sshd_config with new version
+Creating SSH2 RSA key; this may take some time ...
+2048 SHA256:exCovANDE0OW9T1yOKqXpMssPH7D2rS50wbnjUXjBNQ root@11ababe8c51e (RSA)
+Creating SSH2 ECDSA key; this may take some time ...
+256 SHA256:JfH0XY+i37OdLGS3XHKEgJXI/oXXiONie8dUt/i1Wjk root@11ababe8c51e (ECDSA)
+Creating SSH2 ED25519 key; this may take some time ...
+256 SHA256:JfrmzNz4JBPoU0f4taLRx8Ngzjxy9t7b933fgS7XpGw root@11ababe8c51e (ED25519)
+Created symlink /etc/systemd/system/sshd.service → /lib/systemd/system/ssh.service.
+Created symlink /etc/systemd/system/multi-user.target.wants/ssh.service → /lib/systemd/system/ssh.service.
+invoke-rc.d: could not determine current runlevel
+invoke-rc.d: policy-rc.d denied execution of start.
+Setting up libxext6:amd64 (2:1.3.3-1+b2) ...
+Setting up xauth (1:1.0.10-1) ...
+Processing triggers for systemd (241-7~deb10u7) ...
+Processing triggers for libc-bin (2.28-10) ...
+root@11ababe8c51e:/usr/local/tomcat# ls
+BUILDING.txt  CONTRIBUTING.md  LICENSE  NOTICE  README.md  RELEASE-NOTES  RUNNING.txt  bin  conf  lib  logs  native-jni-lib  temp  webapps  webapps.dist  work
+root@11ababe8c51e:/usr/local/tomcat# cd conf/
+root@11ababe8c51e:/usr/local/tomcat/conf# vim tomcat-users.xml
+root@11ababe8c51e:/usr/local/tomcat/conf# cd ../bin/
+root@11ababe8c51e:/usr/local/tomcat/bin# ./shutdown.sh
+Using CATALINA_BASE:   /usr/local/tomcat
+Using CATALINA_HOME:   /usr/local/tomcat
+Using CATALINA_TMPDIR: /usr/local/tomcat/temp
+Using JRE_HOME:        /usr/local/openjdk-11
+Using CLASSPATH:       /usr/local/tomcat/bin/bootstrap.jar:/usr/local/tomcat/bin/tomcat-juli.jar
+Using CATALINA_OPTS:
+NOTE: Picked up JDK_JAVA_OPTIONS:  --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.io=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.util.concurrent=ALL-UNNAMED --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+root@11ababe8c51e:/usr/local/tomcat/bin# ./startup.sh
+Using CATALINA_BASE:   /usr/local/tomcat
+Using CATALINA_HOME:   /usr/local/tomcat
+Using CATALINA_TMPDIR: /usr/local/tomcat/temp
+Using JRE_HOME:        /usr/local/openjdk-11
+Using CLASSPATH:       /usr/local/tomcat/bin/bootstrap.jar:/usr/local/tomcat/bin/tomcat-juli.jar
+Using CATALINA_OPTS:
+Tomcat started.
+root@11ababe8c51e:/usr/local/tomcat/bin# passwd
+New password:
+Retype new password:
+passwd: password updated successfully
+root@11ababe8c51e:/usr/local/tomcat/bin# ls -l /tmp/
+total 4
+drwxr-xr-x 1 root root 4096 Jun  3 11:39 hsperfdata_root
+root@11ababe8c51e:/usr/local/tomcat/bin# useradd -md /home/ambith -s /bin/bash ambith
+root@11ababe8c51e:/usr/local/tomcat/bin# passwd ambith
+New password:
+Retype new password:
+passwd: password updated successfully
+root@11ababe8c51e:/usr/local/tomcat/bin# su - ambith
+ambith@11ababe8c51e:~$ exit
+logout
+root@11ababe8c51e:/usr/local/tomcat/bin# ip addr
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+2: sit0@NONE: <NOARP> mtu 1480 qdisc noop state DOWN group default qlen 1000
+    link/sit 0.0.0.0 brd 0.0.0.0
+22: eth0@if23: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default
+    link/ether 02:42:ac:11:00:03 brd ff:ff:ff:ff:ff:ff link-netnsid 0
+    inet 172.17.0.3/16 brd 172.17.255.255 scope global eth0
+       valid_lft forever preferred_lft forever
+root@11ababe8c51e:/usr/local/tomcat/bin# exit
+exit
+
+C:\Users\Selvi>docker exec -it -u root 2b7d4434223b  /bin/bash
+root@2b7d4434223b:/# cd /var/jenkins_home/workspace/demo/target/
+root@2b7d4434223b:/var/jenkins_home/workspace/demo/target# scp Ambith.war root@172.17.0.3:/tmp/
+ssh: connect to host 172.17.0.3 port 22: Connection refused
+lost connection
+root@2b7d4434223b:/var/jenkins_home/workspace/demo/target# exit
+exit
+
+C:\Users\Selvi>docker ps
+CONTAINER ID   IMAGE                       COMMAND                  CREATED          STATUS          PORTS                                                                                      NAMES
+11ababe8c51e   tomcat                      "/bin/bash"              14 minutes ago   Up 14 minutes   0.0.0.0:8000->8000/tcp, :::8000->8000/tcp, 8080/tcp                                        tomcat-4
+2b7d4434223b   jenkins/jenkins:lts-jdk11   "/sbin/tini -- /usr/…"   3 days ago       Up 7 hours      0.0.0.0:8080->8080/tcp, :::8080->8080/tcp, 0.0.0.0:50000->50000/tcp, :::50000->50000/tcp   kind_dewdney
+
+C:\Users\Selvi>docker exec -it -u root 11ababe8c51e /bin/bash
+root@11ababe8c51e:/usr/local/tomcat# /etc/init.d/ssh start
+[ ok ] Starting OpenBSD Secure Shell server: sshd.
+root@11ababe8c51e:/usr/local/tomcat# exit
+exit
+
+C:\Users\Selvi>docker exec -it -u root 2b7d4434223b  /bin/bash
+root@2b7d4434223b:/# cd /var/jenkins_home/workspace/demo/target/
+root@2b7d4434223b:/var/jenkins_home/workspace/demo/target# scp Ambith.war root@172.17.0.3:/tmp/
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
+Someone could be eavesdropping on you right now (man-in-the-middle attack)!
+It is also possible that a host key has just been changed.
+The fingerprint for the ECDSA key sent by the remote host is
+SHA256:JfH0XY+i37OdLGS3XHKEgJXI/oXXiONie8dUt/i1Wjk.
+Please contact your system administrator.
+Add correct host key in /root/.ssh/known_hosts to get rid of this message.
+Offending ECDSA key in /root/.ssh/known_hosts:1
+  remove with:
+  ssh-keygen -f "/root/.ssh/known_hosts" -R "172.17.0.3"
+ECDSA host key for 172.17.0.3 has changed and you have requested strict checking.
+Host key verification failed.
+lost connection
+root@2b7d4434223b:/var/jenkins_home/workspace/demo/target# ssh-keygen -f "/root/.ssh/known_hosts" -R "172.17.0.3"
+# Host 172.17.0.3 found: line 1
+/root/.ssh/known_hosts updated.
+Original contents retained as /root/.ssh/known_hosts.old
+root@2b7d4434223b:/var/jenkins_home/workspace/demo/target# scp Ambith.war root@172.17.0.3:/tmp/
+The authenticity of host '172.17.0.3 (172.17.0.3)' can't be established.
+ECDSA key fingerprint is SHA256:JfH0XY+i37OdLGS3XHKEgJXI/oXXiONie8dUt/i1Wjk.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added '172.17.0.3' (ECDSA) to the list of known hosts.
+root@172.17.0.3's password:
+Permission denied, please try again.
+root@172.17.0.3's password:
+root@2b7d4434223b:/var/jenkins_home/workspace/demo/target# scp /var/jenkins_home/workspace/demo/target/Ambith.war root@172.17.0.3:/tmp/
+root@172.17.0.3's password:
+Permission denied, please try again.
+root@172.17.0.3's password:
+root@2b7d4434223b:/var/jenkins_home/workspace/demo/target# scp Ambith.war ambith@172.17.0.3:/tmp/
+ambith@172.17.0.3's password:
+bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+Ambith.war                                                                                                                                                         100% 2143    98.7KB/s   00:00
+root@2b7d4434223b:/var/jenkins_home/workspace/demo/target# exit
+exit
+
+C:\Users\Selvi>docker exec -it -u root 11ababe8c51e /bin/bash
+root@11ababe8c51e:/usr/local/tomcat# ls /home/ambith/
+root@11ababe8c51e:/usr/local/tomcat# su - ambith
+ambith@11ababe8c51e:~$ cd /tmp/
+ambith@11ababe8c51e:/tmp$ ls
+Ambith.war  hsperfdata_root
+ambith@11ababe8c51e:/tmp$ pwd
+/tmp
+ambith@11ababe8c51e:/tmp$ mv Ambith.war ~/
+ambith@11ababe8c51e:/tmp$ cd
+ambith@11ababe8c51e:~$ la
+-bash: la: command not found
+ambith@11ababe8c51e:~$ ls
+Ambith.war
+ambith@11ababe8c51e:~$ exit
+logout
+root@11ababe8c51e:/usr/local/tomcat# ls
+BUILDING.txt  CONTRIBUTING.md  LICENSE  NOTICE  README.md  RELEASE-NOTES  RUNNING.txt  bin  conf  lib  logs  native-jni-lib  temp  webapps  webapps.dist  work
+root@11ababe8c51e:/usr/local/tomcat# cd webapps
+root@11ababe8c51e:/usr/local/tomcat/webapps# ls
+root@11ababe8c51e:/usr/local/tomcat/webapps# cp /home/ambith/Ambith.war .
+root@11ababe8c51e:/usr/local/tomcat/webapps# ls
+Ambith  Ambith.war
+root@11ababe8c51e:/usr/local/tomcat/webapps# ls
+Ambith  Ambith.war
+root@11ababe8c51e:/usr/local/tomcat/webapps#
+root@11ababe8c51e:/usr/local/tomcat/webapps#
+root@11ababe8c51e:/usr/local/tomcat/webapps# ls
+Ambith  Ambith.war
+root@11ababe8c51e:/usr/local/tomcat/webapps# cd ../
+root@11ababe8c51e:/usr/local/tomcat# ls
+BUILDING.txt  CONTRIBUTING.md  LICENSE  NOTICE  README.md  RELEASE-NOTES  RUNNING.txt  bin  conf  lib  logs  native-jni-lib  temp  webapps  webapps.dist  work
+root@11ababe8c51e:/usr/local/tomcat# cd bin/
+root@11ababe8c51e:/usr/local/tomcat/bin# ls
+bootstrap.jar       catalina.sh  commons-daemon-native.tar.gz  configtest.sh  digest.sh    setclasspath.sh  startup.sh       tool-wrapper.sh
+catalina-tasks.xml  ciphers.sh   commons-daemon.jar            daemon.sh      makebase.sh  shutdown.sh      tomcat-juli.jar  version.sh
+root@11ababe8c51e:/usr/local/tomcat/bin# ls
+bootstrap.jar       catalina.sh  commons-daemon-native.tar.gz  configtest.sh  digest.sh    setclasspath.sh  startup.sh       tool-wrapper.sh
+catalina-tasks.xml  ciphers.sh   commons-daemon.jar            daemon.sh      makebase.sh  shutdown.sh      tomcat-juli.jar  version.sh
+root@11ababe8c51e:/usr/local/tomcat/bin# ./shutdown.sh
+Using CATALINA_BASE:   /usr/local/tomcat
+Using CATALINA_HOME:   /usr/local/tomcat
+Using CATALINA_TMPDIR: /usr/local/tomcat/temp
+Using JRE_HOME:        /usr/local/openjdk-11
+Using CLASSPATH:       /usr/local/tomcat/bin/bootstrap.jar:/usr/local/tomcat/bin/tomcat-juli.jar
+Using CATALINA_OPTS:
+NOTE: Picked up JDK_JAVA_OPTIONS:  --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.io=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.util.concurrent=ALL-UNNAMED --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+root@11ababe8c51e:/usr/local/tomcat/bin# ./startup.sh
+Using CATALINA_BASE:   /usr/local/tomcat
+Using CATALINA_HOME:   /usr/local/tomcat
+Using CATALINA_TMPDIR: /usr/local/tomcat/temp
+Using JRE_HOME:        /usr/local/openjdk-11
+Using CLASSPATH:       /usr/local/tomcat/bin/bootstrap.jar:/usr/local/tomcat/bin/tomcat-juli.jar
+Using CATALINA_OPTS:
+Tomcat started.
+root@11ababe8c51e:/usr/local/tomcat/bin#
+
+Jenkins File
+
+
+C:\Users\Selvi>docker container start 2b7d4434223b
+2b7d4434223b
+
+C:\Users\Selvi>docker container start 11ababe8c51e
+11ababe8c51e
+
+C:\Users\Selvi>docker ps
+CONTAINER ID   IMAGE                       COMMAND                  CREATED        STATUS          PORTS                                                                                      NAMES
+11ababe8c51e   tomcat                      "/bin/bash"              18 hours ago   Up 18 seconds   0.0.0.0:8000->8000/tcp, :::8000->8000/tcp, 8080/tcp                                        tomcat-4
+2b7d4434223b   jenkins/jenkins:lts-jdk11   "/sbin/tini -- /usr/…"   3 days ago     Up 48 seconds   0.0.0.0:8080->8080/tcp, :::8080->8080/tcp, 0.0.0.0:50000->50000/tcp, :::50000->50000/tcp   kind_dewdney
+
+C:\Users\Selvi>docker exec -it -u root 11ababe8c51e  /bin/bash
+root@11ababe8c51e:/usr/local/tomcat# cd bin/
+root@11ababe8c51e:/usr/local/tomcat/bin# ./startup.sh
+Using CATALINA_BASE:   /usr/local/tomcat
+Using CATALINA_HOME:   /usr/local/tomcat
+Using CATALINA_TMPDIR: /usr/local/tomcat/temp
+Using JRE_HOME:        /usr/local/openjdk-11
+Using CLASSPATH:       /usr/local/tomcat/bin/bootstrap.jar:/usr/local/tomcat/bin/tomcat-juli.jar
+Using CATALINA_OPTS:
+Tomcat started.
+root@11ababe8c51e:/usr/local/tomcat/bin# /etc/i
+init.d/   iproute2/
+root@11ababe8c51e:/usr/local/tomcat/bin# /etc/init.d/ start
+bash: /etc/init.d/: Is a directory
+root@11ababe8c51e:/usr/local/tomcat/bin# /etc/init.d/
+bash: /etc/init.d/: Is a directory
+root@11ababe8c51e:/usr/local/tomcat/bin# /etc/init.d/ssh start
+[ ok ] Starting OpenBSD Secure Shell server: sshd.
+root@11ababe8c51e:/usr/local/tomcat/bin# cd /etc/init.d/
+root@11ababe8c51e:/etc/init.d# ls
+dbus  hwclock.sh  procps  ssh
+root@11ababe8c51e:/etc/init.d# cd ssh
+bash: cd: ssh: Not a directory
+root@11ababe8c51e:/etc/init.d# ls -al
+total 28
+drwxr-xr-x 1 root root 4096 Jun  3 11:34 .
+drwxr-xr-x 1 root root 4096 Jun  3 11:40 ..
+-rwxr-xr-x 1 root root 2813 Jul  5  2020 dbus
+-rwxr-xr-x 1 root root 3809 Jan 10  2019 hwclock.sh
+-rwxr-xr-x 1 root root  924 May 31  2018 procps
+-rwxr-xr-x 1 root root 3939 Jan 31  2020 ssh
+root@11ababe8c51e:/etc/init.d# vim ssh
+root@11ababe8c51e:/etc/init.d# exir
+bash: exir: command not found
+root@11ababe8c51e:/etc/init.d# exit
+exit
+
+C:\Users\Selvi>docker ps
+CONTAINER ID   IMAGE                       COMMAND                  CREATED        STATUS             PORTS                                                                                      NAMES
+11ababe8c51e   tomcat                      "/bin/bash"              19 hours ago   Up About an hour   0.0.0.0:8000->8000/tcp, :::8000->8000/tcp, 8080/tcp                                        tomcat-4
+2b7d4434223b   jenkins/jenkins:lts-jdk11   "/sbin/tini -- /usr/…"   4 days ago     Up About an hour   0.0.0.0:8080->8080/tcp, :::8080->8080/tcp, 0.0.0.0:50000->50000/tcp, :::50000->50000/tcp   kind_dewdney
+
+C:\Users\Selvi>docker exec -it -u root 2b7d4434223b /bin/bash
+root@2b7d4434223b:/# cd /opt/maven/
+root@2b7d4434223b:/opt/maven# ls -aL
+.  ..  apache-maven-3.8.1  apache-maven-3.8.1-bin.tar.gz
+root@2b7d4434223b:/opt/maven# ls -al
+total 9328
+drwxr-xr-x 3 root root    4096 Jun  2 13:01 .
+drwxr-xr-x 1 root root    4096 Jun  2 15:58 ..
+drwxr-xr-x 6 root root    4096 Jun  2 13:01 apache-maven-3.8.1
+-rw-r--r-- 1 root root 9536838 Mar 30 17:41 apache-maven-3.8.1-bin.tar.gz
+root@2b7d4434223b:/opt/maven# cd /root/
+root@2b7d4434223b:~# ls
+root@2b7d4434223b:~# ls -al
+total 48
+drwx------ 1 root root  4096 Jun  3 11:19 .
+drwxr-xr-x 1 root root  4096 May 31 06:05 ..
+-rw------- 1 root root  2534 Jun  3 11:46 .bash_history
+-rw-r--r-- 1 root root   570 Jan 31  2010 .bashrc
+-rw-r--r-- 1 root root   126 May  5 14:04 .gitconfig
+-rw-r--r-- 1 root root   148 Aug 17  2015 .profile
+drwx------ 2 root root  4096 Jun  3 11:44 .ssh
+-rw------- 1 root root 16637 Jun  3 08:26 .viminfo
+root@2b7d4434223b:~# vim .profile
+root@2b7d4434223b:~# vim .bashrc
+root@2b7d4434223b:~# cd /etc/pro
+profile    profile.d/ protocols
+root@2b7d4434223b:~# cd /etc/pro
+profile    profile.d/ protocols
+root@2b7d4434223b:~# cd /etc/profile.d/
+root@2b7d4434223b:/etc/profile.d# ls
+java.sh  mvn.sh
+root@2b7d4434223b:/etc/profile.d# whereis maven
+maven:
+root@2b7d4434223b:/etc/profile.d# whereis mvn
+mvn:
+root@2b7d4434223b:/etc/profile.d# vim mvn.sh
+root@2b7d4434223b:/etc/profile.d# pwd
+/etc/profile.d
+root@2b7d4434223b:/etc/profile.d# vim mvn.sh
+root@2b7d4434223b:/etc/profile.d# echo $ME_HOME
+
+root@2b7d4434223b:/etc/profile.d# echo $M2_HOME
+
+root@2b7d4434223b:/etc/profile.d# echo $JAVA_HOME
+/opt/java/openjdk
+root@2b7d4434223b:/etc/profile.d# echo $MVN_HOME
+
+root@2b7d4434223b:/etc/profile.d# echo M2_HOME
+M2_HOME
+root@2b7d4434223b:/etc/profile.d# echo $M2_HOME
+
+root@2b7d4434223b:/etc/profile.d# ls -al
+total 20
+drwxr-xr-x 1 root root 4096 Jun  4 06:41 .
+drwxr-xr-x 1 root root 4096 Jun  2 13:03 ..
+-rwxr-xr-x 1 root root   72 Jun  2 15:30 java.sh
+-rwxr-xr-x 1 root root   78 Jun  2 15:30 mvn.sh
+root@2b7d4434223b:/etc/profile.d# pwd
+/etc/profile.d
+root@2b7d4434223b:/etc/profile.d# vim java.sh
+root@2b7d4434223b:/etc/profile.d# echo $JAVA_HOME
+/opt/java/openjdk
+root@2b7d4434223b:/etc/profile.d# mvn clean package
+bash: mvn: command not found
+root@2b7d4434223b:/etc/profile.d# cd /opt/maven/apache-maven-3.8.1
+root@2b7d4434223b:/opt/maven/apache-maven-3.8.1# mvn clean package
+bash: mvn: command not found
+root@2b7d4434223b:/opt/maven/apache-maven-3.8.1# cd ..
+root@2b7d4434223b:/opt/maven# cd /var/jenkins_home/
+root@2b7d4434223b:/var/jenkins_home# mvn clean package
+bash: mvn: command not found
+root@2b7d4434223b:/var/jenkins_home# ls -al
+total 228
+drwxr-xr-x 22 jenkins jenkins  4096 Jun  4 05:01 .
+drwxr-xr-x  1 root    root     4096 May  5 14:04 ..
+-rw-------  1 jenkins jenkins   660 Jun  3 11:06 .bash_history
+drwxr-xr-x  4 jenkins jenkins  4096 May 26 08:36 .cache
+drwxr-xr-x  7 jenkins jenkins  4096 May 28 11:39 caches
+drwxr-xr-x  3 jenkins jenkins  4096 May 26 10:05 .config
+-rw-r--r--  1 jenkins jenkins  1778 Jun  4 05:01 config.xml
+-rw-r--r--  1 jenkins jenkins   689 Jun  4 05:00 copy_reference_file.log
+-rw-r--r--  1 jenkins jenkins  3470 May 28 11:12 credentials.xml
+drwxr-xr-x  3 jenkins jenkins  4096 May 26 10:05 fingerprints
+drwxr-xr-x  3 jenkins jenkins  4096 May 26 09:23 .groovy
+-rw-r--r--  1 jenkins jenkins   156 Jun  4 05:00 hudson.model.UpdateCenter.xml
+drwxr-xr-x  2 jenkins jenkins  4096 May 26 09:53 hudson.plugins.deploy.DeployPublisher.Migrator
+-rw-r--r--  1 jenkins jenkins  1270 May 26 10:00 hudson.plugins.emailext.ExtendedEmailPublisher.xml
+-rw-r--r--  1 jenkins jenkins   370 Jun  2 15:12 hudson.plugins.git.GitTool.xml
+-rw-r--r--  1 jenkins jenkins   173 Jun  2 15:12 hudson.plugins.gradle.Gradle.xml
+-rw-r--r--  1 jenkins jenkins   146 Jun  2 15:12 hudson.tasks.Ant.xml
+-rw-r--r--  1 jenkins jenkins   618 Jun  2 15:12 hudson.tasks.Maven.xml
+-rw-r--r--  1 jenkins jenkins   275 Jun  2 07:19 hudson.tools.JDKInstaller.xml
+-rw-------  1 jenkins jenkins  1712 May 26 08:36 identity.key.enc
+drwxr-xr-x  3 jenkins jenkins  4096 May 26 08:35 .java
+-rw-r--r--  1 jenkins jenkins  1611 May 26 09:23 jenkins.install.InstallUtil.installingPlugins
+-rw-r--r--  1 jenkins jenkins     7 Jun  4 05:01 jenkins.install.InstallUtil.lastExecVersion
+-rw-r--r--  1 jenkins jenkins     7 May 26 09:45 jenkins.install.UpgradeWizard.state
+drwxr-xr-x  2 jenkins jenkins  4096 Jun  4 05:08 jenkins-jobs
+-rw-r--r--  1 jenkins jenkins   179 May 26 09:45 jenkins.model.JenkinsLocationConfiguration.xml
+-rw-r--r--  1 jenkins jenkins   247 Jun  2 15:12 jenkins.mvn.GlobalMavenConfig.xml
+-rw-r--r--  1 jenkins jenkins   357 May 26 10:01 jenkins.security.apitoken.ApiTokenPropertyConfiguration.xml
+-rw-r--r--  1 jenkins jenkins   169 May 26 10:01 jenkins.security.QueueItemAuthenticatorConfiguration.xml
+-rw-r--r--  1 jenkins jenkins   162 May 26 10:01 jenkins.security.UpdateSiteWarningsConfiguration.xml
+-rw-r--r--  1 jenkins jenkins   171 May 26 08:36 jenkins.telemetry.Correlator.xml
+drwxr-xr-x  3 jenkins jenkins  4096 May 26 10:03 jobs
+-rw-r--r--  1 jenkins jenkins     0 Jun  4 05:01 .lastStarted
+drwxr-xr-x  3 jenkins jenkins  4096 May 26 08:36 logs
+drwxr-xr-x  3 jenkins jenkins  4096 Jun  2 15:22 .m2
+-rw-r--r--  1 jenkins jenkins   907 Jun  4 05:00 nodeMonitors.xml
+drwxr-xr-x  2 jenkins jenkins  4096 May 26 08:36 nodes
+-rw-r--r--  1 jenkins jenkins   134 May 26 10:01 org.jenkinsci.main.modules.sshd.SSHD.xml
+-rw-r--r--  1 jenkins jenkins   255 Jun  2 15:12 org.jenkinsci.plugins.gitclient.JGitApacheTool.xml
+-rw-r--r--  1 jenkins jenkins   243 Jun  2 15:12 org.jenkinsci.plugins.gitclient.JGitTool.xml
+-rw-r--r--  1 jenkins jenkins   722 Jun  2 15:12 org.jenkinsci.plugins.pipeline.maven.GlobalPipelineMavenConfig.xml
+-rw-r--r--  1 jenkins jenkins    46 Jun  2 15:32 org.jenkinsci.plugins.workflow.flow.FlowExecutionList.xml
+-rw-r--r--  1 jenkins jenkins    43 Jun  4 06:54 .owner
+drwxr-xr-x 88 jenkins jenkins 12288 Jun  4 05:00 plugins
+-rw-r--r--  1 jenkins jenkins   130 Jun  2 15:32 queue.xml.bak
+-rw-r--r--  1 jenkins jenkins    64 May 26 08:35 secret.key
+-rw-r--r--  1 jenkins jenkins     0 May 26 08:35 secret.key.not-so-secret
+drwx------  4 jenkins jenkins  4096 May 26 10:05 secrets
+-rw-rw-r--  1 root    root     7152 May  5 13:55 tini_pub.gpg
+drwxr-xr-x  2 jenkins jenkins  4096 Jun  4 05:02 updates
+drwxr-xr-x  2 jenkins jenkins  4096 May 26 08:36 userContent
+drwxr-xr-x  4 jenkins jenkins  4096 Jun  2 07:20 users
+drwxr-xr-x 11 jenkins jenkins  4096 May 26 08:35 war
+drwxr-xr-x  2 jenkins jenkins  4096 May 26 09:23 workflow-libs
+drwxr-xr-x  6 jenkins jenkins  4096 May 26 10:06 workspace
+root@2b7d4434223b:/var/jenkins_home# cd workspace/
+root@2b7d4434223b:/var/jenkins_home/workspace# mvn clean package
+bash: mvn: command not found
+root@2b7d4434223b:/var/jenkins_home/workspace# mvn.sh clean package
+bash: mvn.sh: command not found
+root@2b7d4434223b:/var/jenkins_home/workspace# cd ..
+root@2b7d4434223b:/var/jenkins_home# cd /etc/profile.d/
+root@2b7d4434223b:/etc/profile.d# mvn clean package
+bash: mvn: command not found
+root@2b7d4434223b:/etc/profile.d#
+root@2b7d4434223b:/etc/profile.d#
+root@2b7d4434223b:/etc/profile.d#
+root@2b7d4434223b:/etc/profile.d#
+root@2b7d4434223b:/etc/profile.d# su - jenkins
+jenkins@2b7d4434223b:~$ mvn -version
+Apache Maven 3.8.1 (05c21c65bdfed0f71a2f2ada8b84da59348c4c5d)
+Maven home: /opt/maven/apache-maven-3.8.1
+Java version: 11.0.11, vendor: AdoptOpenJDK, runtime: /opt/java/openjdk
+Default locale: en_US, platform encoding: ANSI_X3.4-1968
+OS name: "linux", version: "5.4.72-microsoft-standard-wsl2", arch: "amd64", family: "unix"
+jenkins@2b7d4434223b:~$ logout
+root@2b7d4434223b:/etc/profile.d# mvn -version
+bash: mvn: command not found
+root@2b7d4434223b:/etc/profile.d# su jenkins
+jenkins@2b7d4434223b:/etc/profile.d$ mvn clean package
+bash: mvn: command not found
+jenkins@2b7d4434223b:/etc/profile.d$ cd /var/jenkins_home/workspace/
+jenkins@2b7d4434223b:~/workspace$ cd demo
+jenkins@2b7d4434223b:~/workspace/demo$ mvn clean package
+bash: mvn: command not found
+jenkins@2b7d4434223b:~/workspace/demo$ cd mv.n.
+bash: cd: mv.n.: No such file or directory
+jenkins@2b7d4434223b:~/workspace/demo$ mvn clean package
+bash: mvn: command not found
+jenkins@2b7d4434223b:~/workspace/demo$ mvn -version
+bash: mvn: command not found
+jenkins@2b7d4434223b:~/workspace/demo$ whereis vmn
+vmn:
+jenkins@2b7d4434223b:~/workspace/demo$ whereis mvn
+mvn:
+jenkins@2b7d4434223b:~/workspace/demo$ exit
+root@2b7d4434223b:/etc/profile.d# ls /etc/profile.d/
+java.sh  mvn.sh
+root@2b7d4434223b:/etc/profile.d# cat /etc/profile.d/mvn.sh
+export M2_HOME=/opt/maven/apache-maven-3.8.1
+export PATH=${M2_HOME}/bin:$PATH
+root@2b7d4434223b:/etc/profile.d# source /etc/profile.d/mvn.sh
+root@2b7d4434223b:/etc/profile.d# mvn -version
+Apache Maven 3.8.1 (05c21c65bdfed0f71a2f2ada8b84da59348c4c5d)
+Maven home: /opt/maven/apache-maven-3.8.1
+Java version: 11.0.11, vendor: AdoptOpenJDK, runtime: /opt/java/openjdk
+Default locale: en_US, platform encoding: UTF-8
+OS name: "linux", version: "5.4.72-microsoft-standard-wsl2", arch: "amd64", family: "unix"
+root@2b7d4434223b:/etc/profile.d# su - jenkins
+jenkins@2b7d4434223b:~$ mvn -version
+Apache Maven 3.8.1 (05c21c65bdfed0f71a2f2ada8b84da59348c4c5d)
+Maven home: /opt/maven/apache-maven-3.8.1
+Java version: 11.0.11, vendor: AdoptOpenJDK, runtime: /opt/java/openjdk
+Default locale: en_US, platform encoding: ANSI_X3.4-1968
+OS name: "linux", version: "5.4.72-microsoft-standard-wsl2", arch: "amd64", family: "unix"
+jenkins@2b7d4434223b:~$ cd /var/jenkins_home/workspace/demo
+jenkins@2b7d4434223b:~/workspace/demo$ mvn clean package
+[INFO] Scanning for projects...
+[INFO]
+[INFO] --------------------------< in.valaxy:Ambith >--------------------------
+[INFO] Building Ambith Maven Webapp 0.0.1-SNAPSHOT
+[INFO] --------------------------------[ war ]---------------------------------
+[INFO]
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ Ambith ---
+[INFO] Deleting /var/jenkins_home/workspace/demo/target
+[INFO]
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ Ambith ---
+[WARNING] Using platform encoding (ANSI_X3.4-1968 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /var/jenkins_home/workspace/demo/src/main/resources
+[INFO]
+[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ Ambith ---
+[INFO] No sources to compile
+[INFO]
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ Ambith ---
+[WARNING] Using platform encoding (ANSI_X3.4-1968 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /var/jenkins_home/workspace/demo/src/test/resources
+[INFO]
+[INFO] --- maven-compiler-plugin:3.1:testCompile (default-testCompile) @ Ambith ---
+[INFO] No sources to compile
+[INFO]
+[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ Ambith ---
+[INFO] No tests to run.
+[INFO]
+[INFO] --- maven-war-plugin:2.2:war (default-war) @ Ambith ---
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields (file:/var/jenkins_home/.m2/repository/com/thoughtworks/xstream/xstream/1.3.1/xstream-1.3.1.jar) to field java.util.Properties.defaults
+WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+[INFO] Packaging webapp
+[INFO] Assembling webapp [Ambith] in [/var/jenkins_home/workspace/demo/target/Ambith]
+[INFO] Processing war project
+[INFO] Copying webapp resources [/var/jenkins_home/workspace/demo/src/main/webapp]
+[INFO] Webapp assembled in [1982 msecs]
+[INFO] Building war: /var/jenkins_home/workspace/demo/target/Ambith.war
+[INFO] WEB-INF/web.xml already added, skipping
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  41.832 s
+[INFO] Finished at: 2021-06-04T07:33:20Z
+[INFO] ------------------------------------------------------------------------
+jenkins@2b7d4434223b:~/workspace/demo$ ls -al
+total 40
+drwxr-xr-x 6 jenkins jenkins 4096 Jun  4 07:33 .
+drwxr-xr-x 6 jenkins jenkins 4096 May 26 10:06 ..
+-rw-r--r-- 1 jenkins jenkins 1315 May 26 10:06 .classpath
+drwxr-xr-x 8 jenkins jenkins 4096 Jun  2 15:32 .git
+-rw-r--r-- 1 jenkins jenkins 1049 May 26 10:06 .project
+drwxr-xr-x 2 jenkins jenkins 4096 May 26 10:06 .settings
+-rw-r--r-- 1 jenkins jenkins  612 Jun  2 13:20 Jenkinsfile.txt
+-rw-r--r-- 1 jenkins jenkins  706 May 26 10:06 pom.xml
+drwxr-xr-x 3 jenkins jenkins 4096 May 26 10:06 src
+drwxr-xr-x 4 jenkins jenkins 4096 Jun  4 07:33 target
+jenkins@2b7d4434223b:~/workspace/demo$ cd target/
+jenkins@2b7d4434223b:~/workspace/demo/target$ ls -al
+total 20
+drwxr-xr-x 4 jenkins jenkins 4096 Jun  4 07:33 .
+drwxr-xr-x 6 jenkins jenkins 4096 Jun  4 07:33 ..
+drwxr-xr-x 4 jenkins jenkins 4096 Jun  4 07:33 Ambith
+-rw-r--r-- 1 jenkins jenkins 2145 Jun  4 07:33 Ambith.war
+drwxr-xr-x 2 jenkins jenkins 4096 Jun  4 07:33 maven-archiver
+jenkins@2b7d4434223b:~/workspace/demo/target$ echo $M2_HOME
+/opt/maven/apache-maven-3.8.1
+jenkins@2b7d4434223b:~/workspace/demo/target$ exit
+logout
+root@2b7d4434223b:/etc/profile.d# echo $M2_HOME
+/opt/maven/apache-maven-3.8.1
+root@2b7d4434223b:/etc/profile.d# su jenkins
+jenkins@2b7d4434223b:/etc/profile.d$ echo $M2_HOME
+/opt/maven/apache-maven-3.8.1
+jenkins@2b7d4434223b:/etc/profile.d$ exit
+exit
+root@2b7d4434223b:/etc/profile.d# echo $M2_HOME
+/opt/maven/apache-maven-3.8.1
+root@2b7d4434223b:/etc/profile.d# su jenkins
+jenkins@2b7d4434223b:/etc/profile.d$ cd /var/jenkins_home/workspace/demo
+demo/       demo@2/     demo@2@tmp/ demo@tmp/
+jenkins@2b7d4434223b:/etc/profile.d$ cd /var/jenkins_home/workspace/demo/target/
+jenkins@2b7d4434223b:~/workspace/demo/target$ pwd
+/var/jenkins_home/workspace/demo/target
+jenkins@2b7d4434223b:~/workspace/demo/target$ ls -al
+total 20
+drwxr-xr-x 4 jenkins jenkins 4096 Jun  4 07:33 .
+drwxr-xr-x 6 jenkins jenkins 4096 Jun  4 07:33 ..
+drwxr-xr-x 4 jenkins jenkins 4096 Jun  4 07:33 Ambith
+-rw-r--r-- 1 jenkins jenkins 2145 Jun  4 07:33 Ambith.war
+drwxr-xr-x 2 jenkins jenkins 4096 Jun  4 07:33 maven-archiver
+jenkins@2b7d4434223b:~/workspace/demo/target$ exit
+exit
+root@2b7d4434223b:/etc/profile.d# exit
+exit
+
+C:\Users\Selvi>docker ps
+CONTAINER ID   IMAGE                       COMMAND                  CREATED        STATUS       PORTS                                                                                      NAMES
+11ababe8c51e   tomcat                      "/bin/bash"              22 hours ago   Up 5 hours   0.0.0.0:8000->8000/tcp, :::8000->8000/tcp, 8080/tcp                                        tomcat-4
+2b7d4434223b   jenkins/jenkins:lts-jdk11   "/sbin/tini -- /usr/…"   4 days ago     Up 5 hours   0.0.0.0:8080->8080/tcp, :::8080->8080/tcp, 0.0.0.0:50000->50000/tcp, :::50000->50000/tcp   kind_dewdney
+
+C:\Users\Selvi>docker exec -it -u root 11ababe8c51e /bin/bash
+root@11ababe8c51e:/usr/local/tomcat# cd conf/
+root@11ababe8c51e:/usr/local/tomcat/conf# pwd
+/usr/local/tomcat/conf
+root@11ababe8c51e:/usr/local/tomcat/conf# ls -al
+total 252
+drwxr-xr-x 1 root root   4096 Jun  3 11:39 .
+drwxr-xr-x 1 root root   4096 May 13 18:38 ..
+drwxr-x--- 3 root root   4096 Jun  3 11:30 Catalina
+-rw-r--r-- 1 root root  12873 May  8 17:35 catalina.policy
+-rw-r--r-- 1 root root   7262 May  8 17:35 catalina.properties
+-rw-r--r-- 1 root root   1400 May  8 17:35 context.xml
+-rw-r--r-- 1 root root   1149 May  8 17:35 jaspic-providers.xml
+-rw-r--r-- 1 root root   2313 May  8 17:35 jaspic-providers.xsd
+-rw-r--r-- 1 root root   4144 May  8 17:35 logging.properties
+-rw-r--r-- 1 root root   7588 Jun  3 11:30 server.xml
+-rw-r--r-- 1 root root   2357 Jun  3 11:39 tomcat-users.xml
+-rw-r--r-- 1 root root   2558 May  8 17:35 tomcat-users.xsd
+-rw-r--r-- 1 root root 172359 May  8 17:35 web.xml
+root@11ababe8c51e:/usr/local/tomcat/conf# vim server.xml
+root@11ababe8c51e:/usr/local/tomcat/conf# vim tomcat-users.xml
+root@11ababe8c51e:/usr/local/tomcat/conf# cd ../bin/
+root@11ababe8c51e:/usr/local/tomcat/bin# pwd
+/usr/local/tomcat/bin
+root@11ababe8c51e:/usr/local/tomcat/bin# ls -al
+total 412
+drwxr-xr-x 2 root root   4096 May 13 18:39 .
+drwxr-xr-x 1 root root   4096 May 13 18:38 ..
+-rw-r--r-- 1 root root  34804 May  8 17:35 bootstrap.jar
+-rw-r--r-- 1 root root   1664 May  8 17:35 catalina-tasks.xml
+-rwxr-xr-x 1 root root  25304 May 13 18:39 catalina.sh
+-rwxr-xr-x 1 root root   2007 May 13 18:39 ciphers.sh
+-rw-r--r-- 1 root root 207420 May  8 17:35 commons-daemon-native.tar.gz
+-rw-r--r-- 1 root root  25357 May  8 17:35 commons-daemon.jar
+-rwxr-xr-x 1 root root   1932 May 13 18:39 configtest.sh
+-rwxr-xr-x 1 root root   9110 May 13 18:39 daemon.sh
+-rwxr-xr-x 1 root root   1975 May 13 18:39 digest.sh
+-rwxr-xr-x 1 root root   3392 May 13 18:39 makebase.sh
+-rwxr-xr-x 1 root root   3718 May 13 18:39 setclasspath.sh
+-rwxr-xr-x 1 root root   1912 May 13 18:39 shutdown.sh
+-rwxr-xr-x 1 root root   1914 May 13 18:39 startup.sh
+-rw-r--r-- 1 root root  46629 May  8 17:35 tomcat-juli.jar
+-rwxr-xr-x 1 root root   5550 May 13 18:39 tool-wrapper.sh
+-rwxr-xr-x 1 root root   1918 May 13 18:39 version.sh
+root@11ababe8c51e:/usr/local/tomcat/bin# ./startup.sh
+Using CATALINA_BASE:   /usr/local/tomcat
+Using CATALINA_HOME:   /usr/local/tomcat
+Using CATALINA_TMPDIR: /usr/local/tomcat/temp
+Using JRE_HOME:        /usr/local/openjdk-11
+Using CLASSPATH:       /usr/local/tomcat/bin/bootstrap.jar:/usr/local/tomcat/bin/tomcat-juli.jar
+Using CATALINA_OPTS:
+Tomcat started.
+root@11ababe8c51e:/usr/local/tomcat/bin# su - ambith
+ambith@11ababe8c51e:~$ ip addr
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+2: sit0@NONE: <NOARP> mtu 1480 qdisc noop state DOWN group default qlen 1000
+    link/sit 0.0.0.0 brd 0.0.0.0
+10: eth0@if11: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default
+    link/ether 02:42:ac:11:00:03 brd ff:ff:ff:ff:ff:ff link-netnsid 0
+    inet 172.17.0.3/16 brd 172.17.255.255 scope global eth0
+       valid_lft forever preferred_lft forever
+ambith@11ababe8c51e:~$ exit
+logout
+root@11ababe8c51e:/usr/local/tomcat/bin# exit
+exit
+
+C:\Users\Selvi>docker ps
+CONTAINER ID   IMAGE                       COMMAND                  CREATED        STATUS       PORTS                                                                                      NAMES
+11ababe8c51e   tomcat                      "/bin/bash"              23 hours ago   Up 5 hours   0.0.0.0:8000->8000/tcp, :::8000->8000/tcp, 8080/tcp                                        tomcat-4
+2b7d4434223b   jenkins/jenkins:lts-jdk11   "/sbin/tini -- /usr/…"   4 days ago     Up 5 hours   0.0.0.0:8080->8080/tcp, :::8080->8080/tcp, 0.0.0.0:50000->50000/tcp, :::50000->50000/tcp   kind_dewdney
+
+C:\Users\Selvi>docker exec -it -u root 2b7d4434223b /bin/bash
+root@2b7d4434223b:/# ip addr
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+2: sit0@NONE: <NOARP> mtu 1480 qdisc noop state DOWN group default qlen 1000
+    link/sit 0.0.0.0 brd 0.0.0.0
+8: eth0@if9: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default
+    link/ether 02:42:ac:11:00:02 brd ff:ff:ff:ff:ff:ff link-netnsid 0
+    inet 172.17.0.2/16 brd 172.17.255.255 scope global eth0
+       valid_lft forever preferred_lft forever
+root@2b7d4434223b:/# su - jenkins
+jenkins@2b7d4434223b:~$ ip addr
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+2: sit0@NONE: <NOARP> mtu 1480 qdisc noop state DOWN group default qlen 1000
+    link/sit 0.0.0.0 brd 0.0.0.0
+8: eth0@if9: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default
+    link/ether 02:42:ac:11:00:02 brd ff:ff:ff:ff:ff:ff link-netnsid 0
+    inet 172.17.0.2/16 brd 172.17.255.255 scope global eth0
+       valid_lft forever preferred_lft forever
+jenkins@2b7d4434223b:~$ cd /var/jenkins_home/workspace/demo/target/
+jenkins@2b7d4434223b:~/workspace/demo/target$ pwd
+/var/jenkins_home/workspace/demo/target
+jenkins@2b7d4434223b:~/workspace/demo/target$ ls -al
+total 20
+drwxr-xr-x 4 jenkins jenkins 4096 Jun  4 07:33 .
+drwxr-xr-x 6 jenkins jenkins 4096 Jun  4 07:33 ..
+drwxr-xr-x 4 jenkins jenkins 4096 Jun  4 07:33 Ambith
+-rw-r--r-- 1 jenkins jenkins 2145 Jun  4 07:33 Ambith.war
+drwxr-xr-x 2 jenkins jenkins 4096 Jun  4 07:33 maven-archiver
+jenkins@2b7d4434223b:~/workspace/demo/target$ exit
+logout
+root@2b7d4434223b:/# exit
+exit
+
+C:\Users\Selvi>docker ps
+CONTAINER ID   IMAGE                       COMMAND                  CREATED        STATUS       PORTS                                                                                      NAMES
+11ababe8c51e   tomcat                      "/bin/bash"              23 hours ago   Up 5 hours   0.0.0.0:8000->8000/tcp, :::8000->8000/tcp, 8080/tcp                                        tomcat-4
+2b7d4434223b   jenkins/jenkins:lts-jdk11   "/sbin/tini -- /usr/…"   4 days ago     Up 5 hours   0.0.0.0:8080->8080/tcp, :::8080->8080/tcp, 0.0.0.0:50000->50000/tcp, :::50000->50000/tcp   kind_dewdney
+
+C:\Users\Selvi>docker exec -it -u root 11ababe8c51e /bin/bash
+root@11ababe8c51e:/usr/local/tomcat# su - ambith
+ambith@11ababe8c51e:~$ cd /usr/local/tomcat/webapps
+ambith@11ababe8c51e:/usr/local/tomcat/webapps$ exit
+logout
+root@11ababe8c51e:/usr/local/tomcat# /etc/init.d/ssh start
+[ ok ] Starting OpenBSD Secure Shell server: sshd.
+root@11ababe8c51e:/usr/local/tomcat# cd webapps
+root@11ababe8c51e:/usr/local/tomcat/webapps# ls -al
+total 20
+drwxr-xr-x 1 root root 4096 Jun  3 11:49 .
+drwxr-xr-x 1 root root 4096 May 13 18:38 ..
+drwxr-x--- 4 root root 4096 Jun  3 11:49 Ambith
+-rw-r--r-- 1 root root 2143 Jun  3 11:49 Ambith.war
+root@11ababe8c51e:/usr/local/tomcat/webapps# pwd
+/usr/local/tomcat/webapps
+root@11ababe8c51e:/usr/local/tomcat/webapps# ls -al
+total 20
+drwxr-xr-x 1 root root 4096 Jun  3 11:49 .
+drwxr-xr-x 1 root root 4096 May 13 18:38 ..
+drwxr-x--- 4 root root 4096 Jun  3 11:49 Ambith
+-rw-r--r-- 1 root root 2143 Jun  3 11:49 Ambith.war
+root@11ababe8c51e:/usr/local/tomcat/webapps# docker ps
+bash: docker: command not found
+root@11ababe8c51e:/usr/local/tomcat/webapps# exit
+exit
+
+C:\Users\Selvi>docker ps
+CONTAINER ID   IMAGE                       COMMAND                  CREATED        STATUS       PORTS                                                                                      NAMES
+11ababe8c51e   tomcat                      "/bin/bash"              23 hours ago   Up 6 hours   0.0.0.0:8000->8000/tcp, :::8000->8000/tcp, 8080/tcp                                        tomcat-4
+2b7d4434223b   jenkins/jenkins:lts-jdk11   "/sbin/tini -- /usr/…"   4 days ago     Up 6 hours   0.0.0.0:8080->8080/tcp, :::8080->8080/tcp, 0.0.0.0:50000->50000/tcp, :::50000->50000/tcp   kind_dewdney
+
+
